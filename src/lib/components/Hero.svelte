@@ -128,12 +128,12 @@
 		</div>
 
 		
-		<div class="flex flex-wrap items-center gap-4 sm:gap-6 mt-4 sm:mt-8">
-			<button class="flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-[#111111] border border-slate-200 dark:border-[#222222] shadow-sm rounded-full text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#1a1a1a] transition-all duration-700 ease-in-out whitespace-nowrap">
-				<span class="w-2 h-2 rounded-full bg-slate-900 dark:bg-white shrink-0"></span>
+		<div class="flex flex-nowrap items-center gap-3 sm:gap-6 mt-4 sm:mt-8">
+			<button class="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-white dark:bg-[#111111] border border-slate-200 dark:border-[#222222] shadow-sm rounded-full text-xs sm:text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-[#1a1a1a] transition-all duration-700 ease-in-out whitespace-nowrap shrink-0">
+				<span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-slate-900 dark:bg-white shrink-0"></span>
 				Let's Work Together
 			</button>
-			<a href="/roadmap" class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+			<a href="/roadmap" class="text-[11px] sm:text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white whitespace-nowrap shrink-0">
 				View updates & roadmap
 			</a>
 		</div>
