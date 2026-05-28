@@ -24,6 +24,7 @@
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.2.2",
+		"@types/canvas-confetti": "^1.9.0",
 		"@types/node": "^22",
 		"drizzle-kit": "^0.31.10",
 		"drizzle-orm": "^0.45.2",
@@ -35,5 +36,9 @@
 		"tailwindcss": "^4.2.2",
 		"typescript": "^6.0.2",
 		"vite": "^8.0.7"
+	},
+	"dependencies": {
+		"canvas-confetti": "^1.9.4",
+		"lucide-svelte": "^0.468.0"
 	}
 }
