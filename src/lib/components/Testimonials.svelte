@@ -144,11 +144,12 @@
 					<input id="email" type="email" bind:value={newEmail} required class="w-full bg-slate-50 dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#333] rounded-lg px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500" placeholder="example@gmail.com" />
 				</div>
 				<div>
-					<label class="block text-sm font-medium text-slate-400 mb-2">Rating</label>
+					<span class="block text-sm font-medium text-slate-400 mb-2">Rating</span>
 					<div class="flex items-center gap-2">
 						{#each [1, 2, 3, 4, 5] as star}
 							<button 
 								type="button" 
+								aria-label="Rate {star} stars"
 								class="focus:outline-none transition-transform hover:scale-110 active:scale-95"
 								onmouseenter={() => hoverRating = star}
 								onmouseleave={() => hoverRating = 0}
