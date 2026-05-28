@@ -6,7 +6,7 @@
 	let currentPath = $derived($page.url.pathname);
 </script>
 
-<div class="fixed bottom-10 sm:bottom-8 w-full flex justify-center z-[100] pointer-events-none">
+<div class="fixed bottom-16 sm:bottom-8 w-full flex justify-center z-[100] pointer-events-none">
 	<nav class="pointer-events-auto hide-scrollbar flex items-center gap-2 sm:gap-4 md:gap-6 px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-black/50 rounded-full transition-all duration-500 ease-out overflow-x-auto max-w-[95vw]">
 		
 		<!-- Home Icon -->
