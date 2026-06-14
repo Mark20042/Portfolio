@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import myicon from '$lib/images/me.png';
 	import { onMount, flushSync } from 'svelte';
 	import Dock from '$lib/components/Dock.svelte';
 	import Footer from '$lib/components/Footer.svelte';
@@ -75,8 +75,8 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
-	<title>My Portfolio</title>
+	<link rel="icon" href={myicon} />
+	<title>Mark Joseph Potot</title>
 </svelte:head>
 
 <div class="min-h-screen bg-white text-slate-900 dark:bg-[#111111] dark:text-slate-50 selection:bg-black/10 dark:selection:bg-white/10 flex flex-col">
