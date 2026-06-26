@@ -9,6 +9,7 @@
 	<img 
 		src={skyline} 
 		alt="City Skyline" 
+		width="1920" height="300" loading="lazy" decoding="async"
 		class="w-full h-auto opacity-90 dark:opacity-70 pointer-events-none select-none" 
 	/>
 </footer>

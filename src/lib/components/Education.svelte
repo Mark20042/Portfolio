@@ -40,14 +40,14 @@
 			<div class="flex items-center justify-between group">
 				<div class="flex items-center gap-4">
 					<div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-slate-200 dark:border-[#2a2a2a] bg-slate-50 dark:bg-[#151515] shadow-sm flex shrink-0 items-center justify-center overflow-hidden transition-all duration-500 ease-out group-hover:scale-105 group-hover:border-sky-500/30 group-hover:shadow-md dark:group-hover:shadow-[0_0_15px_rgba(236,72,153,0.1)]">
-						<img src={edu.image} alt={edu.school} class="w-[85%] h-[85%] object-contain rounded-full transition-transform duration-500 group-hover:scale-110" />
+						<img src={edu.image} alt={edu.school} width="48" height="48" loading="lazy" decoding="async" class="w-[85%] h-[85%] object-contain rounded-full transition-transform duration-500 group-hover:scale-110" />
 					</div>
 					<div class="flex flex-col gap-0.5">
 						<h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 transition-colors duration-300 group-hover:text-sky-500 dark:group-hover:text-sky-400">{edu.school}</h3>
-						<p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-medium">{edu.degree}</p>
+						<p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 font-medium">{edu.degree}</p>
 					</div>
 				</div>
-				<div class="text-xs sm:text-sm font-medium text-slate-400 dark:text-slate-500 tracking-wide ml-4 whitespace-nowrap">
+				<div class="text-xs sm:text-sm font-medium text-slate-400 dark:text-slate-600 tracking-wide ml-4 whitespace-nowrap">
 					{edu.years}
 				</div>
 			</div>

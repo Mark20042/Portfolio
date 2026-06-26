@@ -27,7 +27,7 @@
 	<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 sm:mb-16">
 		<div class="text-left max-w-2xl">
 			<h2 class="text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 tracking-tight">Certifications & Achievements</h2>
-			<p class="text-base sm:text-xl text-slate-500 dark:text-slate-400 leading-relaxed">
+			<p class="text-base sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
 				A showcase of my continuous learning and professional development.
 			</p>
 		</div>
@@ -47,6 +47,7 @@
 				<img 
 					src={cert.image} 
 					alt={cert.title} 
+					width="800" height="600" loading="lazy" decoding="async"
 					class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
 				/>
 				<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -85,7 +86,7 @@
 				<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 			</button>
 
-			<img src={selectedCert.image} alt={selectedCert.title} class="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl" />
+			<img src={selectedCert.image} alt={selectedCert.title} width="800" height="600" loading="lazy" decoding="async" class="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl" />
 			
 			<div class="mt-6 text-center">
 				<h3 class="text-2xl font-bold text-white mb-2">{selectedCert.title}</h3>

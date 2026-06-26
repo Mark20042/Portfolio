@@ -29,7 +29,7 @@
 	<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 sm:mb-16">
 		<div class="text-left max-w-2xl">
 			<h2 class="text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 tracking-tight">Check out my latest work</h2>
-			<p class="text-base sm:text-xl text-slate-500 dark:text-slate-400 leading-relaxed">
+			<p class="text-base sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
 				I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.
 			</p>
 		</div>
@@ -53,6 +53,7 @@
 						<img 
 							src={img} 
 							alt={project.title} 
+							width="800" height="600" loading="lazy" decoding="async"
 							class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out {(tick % project.images.length) === i ? 'opacity-100 scale-100' : 'opacity-0 scale-105'} group-hover:scale-105" 
 						/>
 					{/each}
@@ -60,6 +61,7 @@
 					<img 
 						src={project.image} 
 						alt={project.title} 
+						width="800" height="600" loading="lazy" decoding="async"
 						class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
 					/>
 				{/if}
@@ -107,9 +109,9 @@
 				<!-- Image hero in modal -->
 				<div class="relative w-full h-64 sm:h-[400px] shrink-0 bg-slate-100 dark:bg-[#1a1a1a]">
 					{#if selectedProject.images && selectedProject.images.length > 0}
-						<img src={selectedProject.images[tick % selectedProject.images.length]} alt={selectedProject.title} class="w-full h-full object-cover" />
+						<img src={selectedProject.images[tick % selectedProject.images.length]} alt={selectedProject.title} width="800" height="600" loading="lazy" decoding="async" class="w-full h-full object-cover" />
 					{:else}
-						<img src={selectedProject.image} alt={selectedProject.title} class="w-full h-full object-cover" />
+						<img src={selectedProject.image} alt={selectedProject.title} width="800" height="600" loading="lazy" decoding="async" class="w-full h-full object-cover" />
 					{/if}
 					<!-- Fade bottom edge for smooth transition into content -->
 					<div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-[#111111] to-transparent"></div>
@@ -146,7 +148,7 @@
 					</div>
 
 					<div class="mt-auto">
-						<h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-widest">Technologies Used</h4>
+						<h4 class="text-xs font-bold text-slate-600 dark:text-slate-400 mb-4 uppercase tracking-widest">Technologies Used</h4>
 						<div class="flex flex-wrap gap-2.5">
 							{#each selectedProject.techStack as tag}
 								<span class="px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl shadow-sm">

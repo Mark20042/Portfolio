@@ -62,7 +62,7 @@
 <div class="pt-16 pb-0" id="testimonials">
 	<div class="text-center mb-8">
 		<h2 class="text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">What clients say</h2>
-		<p class="text-base sm:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed px-4">
+		<p class="text-base sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed px-4">
 			See what clients think about working with me and the results we achieved together.
 		</p>
 	</div>
@@ -70,9 +70,9 @@
 	<!-- Horizontal Scroll of Testimonials -->
 	<div class="flex overflow-x-auto gap-4 pb-8 mb-8 snap-x snap-mandatory scrollbar-hide px-4 md:px-0">
 		{#if loading}
-			<div class="w-full text-center text-slate-500 py-12">Loading testimonials...</div>
+			<div class="w-full text-center text-slate-600 py-12">Loading testimonials...</div>
 		{:else if testimonials.length === 0}
-			<div class="w-full text-center text-slate-500 py-12">No feedback yet. Be the first!</div>
+			<div class="w-full text-center text-slate-600 py-12">No feedback yet. Be the first!</div>
 		{:else}
 			{#each testimonials as t}
 				<div class="min-w-[300px] md:min-w-[350px] bg-slate-50 dark:bg-[#111111] border border-slate-200 dark:border-[#222] rounded-3xl p-6 snap-center shrink-0">
@@ -82,7 +82,7 @@
 							<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 via-purple-500 to-amber-500 shrink-0"></div>
 							<div class="overflow-hidden">
 								<h4 class="text-slate-900 dark:text-white font-bold text-sm truncate">{t.email}</h4>
-								<p class="text-slate-500 dark:text-slate-400 text-xs">{t.role}</p>
+								<p class="text-slate-600 dark:text-slate-400 text-xs">{t.role}</p>
 							</div>
 						</div>
 						<div class="flex items-center gap-1 text-amber-400">
@@ -111,7 +111,7 @@
 			</div>
 		</button>
 		
-		<span class="text-sm font-medium text-slate-500 dark:text-slate-400 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors">
+		<span class="text-sm font-medium text-slate-600 dark:text-slate-400 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors">
 			View feedback
 		</span>
 	</div>
@@ -133,7 +133,7 @@
 						<Check class="w-8 h-8" strokeWidth={3} />
 					</div>
 					<h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Thank You!</h3>
-					<p class="text-slate-500 dark:text-slate-400">Your feedback has been submitted and is waiting for approval.</p>
+					<p class="text-slate-600 dark:text-slate-400">Your feedback has been submitted and is waiting for approval.</p>
 				</div>
 			{:else}
 				<h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Leave Feedback</h3>

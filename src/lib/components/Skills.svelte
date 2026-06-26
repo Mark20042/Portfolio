@@ -45,7 +45,7 @@
 			<div 
 				class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-slate-50 dark:bg-[#151515] hover:bg-slate-100 dark:hover:bg-[#1f1f1f] border border-slate-200 dark:border-[#2a2a2a] rounded-full text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 transition-colors duration-300 cursor-default shadow-sm"
 			>
-				<img src={skill.image} alt={skill.name} class="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain {skill.invertDark ? 'dark:invert opacity-90' : ''}" />
+				<img src={skill.image} alt={skill.name} width="16" height="16" loading="lazy" decoding="async" class="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain {skill.invertDark ? 'dark:invert opacity-90' : ''}" />
 				{skill.name}
 			</div>
 		{/each}

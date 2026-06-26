@@ -40,12 +40,12 @@
 
 <div class="min-h-screen pt-8 px-4 sm:px-8 xl:px-12 max-w-screen-2xl mx-auto flex flex-col">
 	<div class="mb-12 shrink-0">
-		<a href="/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors mb-6">
+		<a href="/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors mb-6">
 			<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
 			Back to Home
 		</a>
 		<h1 class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">All Certificates</h1>
-		<p class="text-lg text-slate-500 dark:text-slate-400">
+		<p class="text-lg text-slate-600 dark:text-slate-400">
 			A complete archive of my certifications and achievements across multiple disciplines.
 		</p>
 	</div>
@@ -77,8 +77,7 @@
 					onclick={() => selectedCert = cert}
 					class="group relative aspect-[4/3] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-1 border border-slate-200 dark:border-[#222] transition-all duration-300"
 				>
-					<img 
-						src={cert.image} 
+					<img width="800" height="600" loading="lazy" decoding="async" src={cert.image} 
 						alt={cert.title} 
 						class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
 					/>
@@ -99,7 +98,7 @@
 		<!-- Pagination -->
 		{#if totalPages > 1}
 			<div class="flex items-center justify-between w-full mt-auto pt-8 border-t border-slate-200 dark:border-[#222]">
-				<span class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+				<span class="text-sm font-semibold text-slate-600 dark:text-slate-400">
 					Page {currentPage} of {totalPages}
 				</span>
 				
@@ -147,7 +146,7 @@
 				<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 			</button>
 
-			<img src={selectedCert.image} alt={selectedCert.title} class="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl" />
+			<img width="800" height="600" loading="lazy" decoding="async" src={selectedCert.image} alt={selectedCert.title} class="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl" />
 			
 			<div class="mt-6 text-center">
 				<h3 class="text-2xl font-bold text-white mb-2">{selectedCert.title}</h3>

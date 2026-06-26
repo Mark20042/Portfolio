@@ -92,7 +92,7 @@
 			<!-- Bouncy Image Container with Tilt & Glow -->
 			<div class="relative w-full h-full rounded-3xl overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[1.08] group-hover:-translate-y-3 group-hover:-rotate-3 z-10">
 				<!-- Cinematic Grayscale to Color Transition -->
-				<img src={myImage} alt="Mark Joseph Potot" class="w-full h-full object-cover grayscale-[30%] brightness-90 contrast-125 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700 ease-out group-hover:scale-110 drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_20px_25px_rgba(236,72,153,0.4)]" />
+				<img src={myImage} alt="Mark Joseph Potot" width="192" height="192" fetchpriority="high" decoding="sync" class="w-full h-full object-cover grayscale-[30%] brightness-90 contrast-125 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700 ease-out group-hover:scale-110 drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_20px_25px_rgba(236,72,153,0.4)]" />
 			</div>
 		</div>
 
@@ -103,7 +103,7 @@
 		</h1>
 		
 		<div class="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 font-medium mb-3 text-sm sm:text-base">
-			<MapPin class="w-4 h-4 text-slate-500 dark:text-slate-400" />
+			<MapPin class="w-4 h-4 text-slate-600 dark:text-slate-400" />
 			Cayang Bogo City, Cebu, Philippines
 		</div>
 
@@ -114,7 +114,7 @@
 		<!-- Stats / Badges (Moved below title for better layout) -->
 		<div class="flex flex-wrap gap-3 mb-6">
 			<div class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
-				<Eye class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+				<Eye class="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
 				{viewsCount} Profile Views
 			</div>
 			<div class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
@@ -122,7 +122,7 @@
 				{avgRating}
 			</div>
 			<button onclick={handleLike} class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 border rounded-full text-xs font-semibold shadow-sm transition-all duration-300 cursor-pointer active:scale-95 {hasLiked ? 'text-sky-500 border-sky-200 dark:border-sky-900/50 bg-sky-50 dark:bg-sky-950/20 shadow-sky-500/20' : 'border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-400 hover:border-sky-200 dark:hover:border-sky-900/50 hover:shadow-sm'}">
-				<Heart class="w-3.5 h-3.5 transition-colors duration-300 {hasLiked ? 'fill-sky-500 text-sky-500' : 'text-slate-500 dark:text-slate-400 group-hover:text-sky-500'}" />
+				<Heart class="w-3.5 h-3.5 transition-colors duration-300 {hasLiked ? 'fill-sky-500 text-sky-500' : 'text-slate-600 dark:text-slate-400 group-hover:text-sky-500'}" />
 				{likesCount}
 			</button>
 		</div>
@@ -147,7 +147,7 @@
 		<!-- Bouncy Image Container with Tilt & Glow -->
 		<div class="relative w-full h-full rounded-3xl overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[1.08] group-hover:-translate-y-3 group-hover:-rotate-3 z-10">
 			<!-- Cinematic Grayscale to Color Transition -->
-			<img src={myImage} alt="Mark Joseph Potot" class="w-full h-full object-cover grayscale-[30%] brightness-90 contrast-125 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700 ease-out group-hover:scale-110 drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_20px_25px_rgba(236,72,153,0.4)]" />
+			<img src={myImage} alt="Mark Joseph Potot" width="192" height="192" fetchpriority="high" decoding="sync" class="w-full h-full object-cover grayscale-[30%] brightness-90 contrast-125 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700 ease-out group-hover:scale-110 drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_20px_25px_rgba(236,72,153,0.4)]" />
 		</div>
 	</div>
 </div>

@@ -42,12 +42,12 @@
 
 <div class="min-h-screen pt-8 px-4 sm:px-8 xl:px-12 max-w-screen-2xl mx-auto flex flex-col relative z-10">
 	<div class="mb-10 shrink-0">
-		<a href="/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors mb-6">
+		<a href="/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors mb-6">
 			<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
 			Back to Home
 		</a>
 		<h1 class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">All Projects</h1>
-		<p class="text-lg text-slate-500 dark:text-slate-400">
+		<p class="text-lg text-slate-600 dark:text-slate-400">
 			A full archive of my projects spanning full-stack development, AI, robotics, and design.
 		</p>
 	</div>
@@ -63,15 +63,13 @@
 				<!-- Image Section -->
 				{#if project.images && project.images.length > 0}
 					{#each project.images as img, i}
-						<img 
-							src={img} 
+						<img width="800" height="600" loading="lazy" decoding="async" src={img} 
 							alt={project.title} 
 							class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out {(tick % project.images.length) === i ? 'opacity-100 scale-100' : 'opacity-0 scale-105'} group-hover:scale-105" 
 						/>
 					{/each}
 				{:else}
-					<img 
-						src={project.image} 
+					<img width="800" height="600" loading="lazy" decoding="async" src={project.image} 
 						alt={project.title} 
 						class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
 					/>
@@ -97,7 +95,7 @@
 	<!-- Pagination -->
 	{#if totalPages > 1}
 		<div class="flex items-center justify-between w-full mt-auto pt-8 border-t border-slate-200 dark:border-[#222]">
-			<span class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+			<span class="text-sm font-semibold text-slate-600 dark:text-slate-400">
 				Page {currentPage} of {totalPages}
 			</span>
 			
@@ -147,9 +145,9 @@
 			<!-- Image hero in modal -->
 			<div class="relative w-full h-64 sm:h-[400px] shrink-0 bg-slate-100 dark:bg-[#1a1a1a]">
 				{#if selectedProject.images && selectedProject.images.length > 0}
-					<img src={selectedProject.images[tick % selectedProject.images.length]} alt={selectedProject.title} class="w-full h-full object-cover" />
+					<img width="800" height="600" loading="lazy" decoding="async" src={selectedProject.images[tick % selectedProject.images.length]} alt={selectedProject.title} class="w-full h-full object-cover" />
 				{:else}
-					<img src={selectedProject.image} alt={selectedProject.title} class="w-full h-full object-cover" />
+					<img width="800" height="600" loading="lazy" decoding="async" src={selectedProject.image} alt={selectedProject.title} class="w-full h-full object-cover" />
 				{/if}
 				<!-- Fade bottom edge for smooth transition into content -->
 				<div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-[#111111] to-transparent"></div>
@@ -186,7 +184,7 @@
 				</div>
 
 				<div class="mt-auto">
-					<h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-widest">Technologies Used</h4>
+					<h4 class="text-xs font-bold text-slate-600 dark:text-slate-400 mb-4 uppercase tracking-widest">Technologies Used</h4>
 					<div class="flex flex-wrap gap-2.5">
 						{#each selectedProject.techStack as tag}
 							<span class="px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl shadow-sm">
