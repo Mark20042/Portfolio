@@ -63,7 +63,6 @@
 					<img width="800" height="600" loading="lazy" decoding="async" src={item.src} 
 						alt="Gallery Item {item.id}" 
 						class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-110"
-						loading="lazy"
 					/>
 					
 					<!-- Subtle Overlay on Hover -->
