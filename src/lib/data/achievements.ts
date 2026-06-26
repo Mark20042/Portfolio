@@ -1,32 +1,32 @@
 // development
-import swe from '$lib/images/certificates/development/swe.png';
-import frontend from '$lib/images/certificates/development/frontend.png';
-import swe_intern from '$lib/images/certificates/development/swe_intern.png';
-import rest_api from '$lib/images/certificates/development/restapi.png';
-import reacbasic from '$lib/images/certificates/development/reacbasic.png';
-import csharp from '$lib/images/certificates/development/csharp.png';
-import jsinter from '$lib/images/certificates/development/jsintermediate.png';
-import nodejsinter from '$lib/images/certificates/development/nodejsintermediate.png';
-import sqladvanced from '$lib/images/certificates/development/sqladvanced.png';
-import golanginter from '$lib/images/certificates/development/golanginter.png';
-import problemsolve from '$lib/images/certificates/development/problemsolvinginter.png';
-import rba from '$lib/images/certificates/development/rba.jpg';
-import sql from '$lib/images/certificates/development/sql.png';
-import jsessen from '$lib/images/certificates/development/jseessen.png';
-import htmlessen from '$lib/images/certificates/development/htmlessen.png';
+import swe from '$lib/images/certificates/development/swe.webp';
+import frontend from '$lib/images/certificates/development/frontend.webp';
+import swe_intern from '$lib/images/certificates/development/swe_intern.webp';
+import rest_api from '$lib/images/certificates/development/restapi.webp';
+import reacbasic from '$lib/images/certificates/development/reacbasic.webp';
+import csharp from '$lib/images/certificates/development/csharp.webp';
+import jsinter from '$lib/images/certificates/development/jsintermediate.webp';
+import nodejsinter from '$lib/images/certificates/development/nodejsintermediate.webp';
+import sqladvanced from '$lib/images/certificates/development/sqladvanced.webp';
+import golanginter from '$lib/images/certificates/development/golanginter.webp';
+import problemsolve from '$lib/images/certificates/development/problemsolvinginter.webp';
+import rba from '$lib/images/certificates/development/rba.webp';
+import sql from '$lib/images/certificates/development/sql.webp';
+import jsessen from '$lib/images/certificates/development/jseessen.webp';
+import htmlessen from '$lib/images/certificates/development/htmlessen.webp';
 
 //schools certificate
-import robotics from '$lib/images/certificates/schools/cert.jpg';
-import dl1 from '$lib/images/certificates/schools/dl1.jpg';
-import dl2 from '$lib/images/certificates/schools/dl2.jpg';
-import dl3 from '$lib/images/certificates/schools/dl3.jpg';
+import robotics from '$lib/images/certificates/schools/cert.webp';
+import dl1 from '$lib/images/certificates/schools/dl1.webp';
+import dl2 from '$lib/images/certificates/schools/dl2.webp';
+import dl3 from '$lib/images/certificates/schools/dl3.webp';
 
 //networking and cybersecurity
-import networkingbasics from '$lib/images/certificates/networking/networkingbasics.png';
-import ethicalhacking from '$lib/images/certificates/networking/ethicalhacker.png';
-import juniorcybersec from '$lib/images/certificates/networking/juniorcybersec.png';
-import linuxessen from '$lib/images/certificates/networking/linuxessen.png';
-import cybersecintro from '$lib/images/certificates/networking/cybersectintro.png';
+import networkingbasics from '$lib/images/certificates/networking/networkingbasics.webp';
+import ethicalhacking from '$lib/images/certificates/networking/ethicalhacker.webp';
+import juniorcybersec from '$lib/images/certificates/networking/juniorcybersec.webp';
+import linuxessen from '$lib/images/certificates/networking/linuxessen.webp';
+import cybersecintro from '$lib/images/certificates/networking/cybersectintro.webp';
 
 /** Defines the structure for a single achievement item */
 export interface AchievementItem {

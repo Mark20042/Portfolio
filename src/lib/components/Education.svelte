@@ -1,8 +1,8 @@
 <script lang="ts">
-	import crmcImg from '$lib/images/schools/crmc.png';
-	import cbshsImg from '$lib/images/schools/cbshs.png';
-	import mnhsImg from '$lib/images/schools/mnhs.jpg';
-	import ansImg from '$lib/images/schools/ans.png';
+	import crmcImg from '$lib/images/schools/crmc.webp';
+	import cbshsImg from '$lib/images/schools/cbshs.webp';
+	import mnhsImg from '$lib/images/schools/mnhs.webp';
+	import ansImg from '$lib/images/schools/ans.webp';
 
 	const educationList = [
 		{

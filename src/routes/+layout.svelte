@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import myicon from '$lib/images/me.png';
+	import myicon from '$lib/images/me.webp';
 	import { onMount, flushSync } from 'svelte';
 	import Dock from '$lib/components/Dock.svelte';
 	import Footer from '$lib/components/Footer.svelte';

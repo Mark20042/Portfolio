@@ -1,5 +1,5 @@
 <script lang="ts">
-	import myImage from '$lib/images/me.png';
+	import myImage from '$lib/images/me.webp';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
