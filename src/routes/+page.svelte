@@ -14,8 +14,8 @@
 
 	<Reveal delay={80}><About /></Reveal>
 	<Reveal delay={140}><Skills /></Reveal>
-	<Reveal delay={200}><Education /></Reveal>
 	<Reveal delay={260}><Projects /></Reveal>
+	<Reveal delay={200}><Education /></Reveal>
 	<Reveal delay={320}><Achievements /></Reveal>
 	<Reveal delay={380}><Testimonials /></Reveal>
 </div>
