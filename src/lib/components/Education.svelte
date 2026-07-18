@@ -13,7 +13,7 @@
 		},
 		{
 			school: 'City of Bogo Senior High School',
-			degree: 'Senior High School Diploma',
+			degree: 'Senior High School',
 			years: '2021 - 2023',
 			image: cbshsImg
 		},
