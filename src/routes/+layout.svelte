@@ -10,7 +10,7 @@
 	let { children } = $props();
 	let isDark = $state(false);
 
-	let isWidePage = $derived($page.url.pathname.startsWith('/projects') || $page.url.pathname.startsWith('/certificates') || $page.url.pathname.startsWith('/gallery'));
+	let isWidePage = $derived($page.url.pathname.startsWith('/projects') || $page.url.pathname.startsWith('/certificates') || $page.url.pathname.startsWith('/gallery') || $page.url.pathname.startsWith('/skills'));
 
 	onMount(() => {
 		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

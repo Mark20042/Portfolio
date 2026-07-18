@@ -3,10 +3,10 @@ import { db } from '$lib/server/db';
 import { stats, testimonials } from '$lib/server/db/schema';
 import { eq, sql } from 'drizzle-orm';
 
-// GET stats
+
 export async function GET() {
 	try {
-		// Get or create stats row (assuming id = 1)
+		
 		let result = await db.select().from(stats).where(eq(stats.id, 1));
 		if (result.length === 0) {
 			result = await db.insert(stats).values({ id: 1, views: 0, likes: 0 }).returning();
@@ -32,12 +32,12 @@ export async function GET() {
 	}
 }
 
-// POST increment view or like
+
 export async function POST({ request }) {
 	try {
 		const { action } = await request.json();
 		
-		// Ensure row exists
+		
 		const existing = await db.select().from(stats).where(eq(stats.id, 1));
 		if (existing.length === 0) {
 			await db.insert(stats).values({ id: 1, views: 0, likes: 0 });
@@ -58,7 +58,7 @@ export async function POST({ request }) {
 			return json({ error: 'Invalid action' }, { status: 400 });
 		}
 
-		// Calculate avg rating from approved testimonials
+		
 		const avgRes = await db.select({
 			avg: sql`avg(${testimonials.rating})`
 		}).from(testimonials).where(eq(testimonials.approved, true));
