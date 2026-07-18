@@ -1,5 +1,7 @@
 <script lang="ts">
-	const techStack = [
+		import Reveal from '$lib/components/Reveal.svelte';
+
+const techStack = [
 		{
 			category: 'Frontend',
 			skills: [

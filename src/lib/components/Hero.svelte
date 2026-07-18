@@ -3,6 +3,9 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
+
 	import { Eye, Star, Heart, MapPin } from 'lucide-svelte';
 
 	let mounted = $state(false);
@@ -13,6 +16,8 @@
 	let hasLiked = $state(false);
 
 	onMount(async () => {
+		if (!browser) return;
+
 		mounted = true;
 		try {
 			const res = await fetch('/api/stats', {
@@ -111,42 +116,44 @@
 			</div>
 
 			<!-- Hero Text -->
-			<h1
-				class="mb-2 flex items-center gap-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white"
-			>
-				Mark Joseph Potot
-				<svg
-					class="h-5 w-5 fill-blue-500 text-blue-500"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					><path
-						d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
-					/><path d="m9 12 2 2 4-4" stroke="white" stroke-width="3" /></svg
+			<StaggerReveal delay={30} stagger={70} duration={720}>
+				<h1
+					class="mb-2 flex items-center gap-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white"
 				>
-			</h1>
+					Mark Joseph Potot
+					<svg
+						class="h-5 w-5 fill-blue-500 text-blue-500"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						><path
+							d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+						/><path d="m9 12 2 2 4-4" stroke="white" stroke-width="3" /></svg
+					>
+				</h1>
 
-			<div
-				class="mb-3 flex items-center gap-1.5 text-sm font-medium text-slate-700 sm:text-base dark:text-slate-300"
-			>
-				<MapPin class="h-4 w-4 text-slate-600 dark:text-slate-400" />
-				Lahug Cebu City, Cebu, Philippines
-			</div>
+				<div
+					class="mb-3 flex items-center gap-1.5 text-sm font-medium text-slate-700 sm:text-base dark:text-slate-300"
+				>
+					<MapPin class="h-4 w-4 text-slate-600 dark:text-slate-400" />
+					Lahug Cebu City, Cebu, Philippines
+				</div>
 
-			<div
-				class="mb-6 flex items-center gap-1.5 text-xs font-medium whitespace-nowrap text-slate-900 sm:gap-2 sm:text-sm md:text-base dark:text-white"
-			>
-				Full-Stack Developer <span class="font-light text-slate-300 dark:text-slate-600">\</span>
-				Generative AI
-				<span class="font-light text-slate-300 dark:text-slate-600">\</span> Data Science
-			</div>
+				<div
+					class="mb-6 flex items-center gap-1.5 text-xs font-medium whitespace-nowrap text-slate-900 sm:gap-2 sm:text-sm md:text-base dark:text-white"
+				>
+					Full-Stack Developer <span class="font-light text-slate-300 dark:text-slate-600">\</span>
+					Generative AI
+					<span class="font-light text-slate-300 dark:text-slate-600">\</span> Data Science
+				</div>
+			</StaggerReveal>
 
 			<!-- Stats / Badges (Moved below title for better layout) -->
-			<div class="mb-6 flex flex-wrap gap-3">
+			<StaggerReveal delay={170} stagger={80} duration={700} className="mb-6 flex flex-wrap gap-3">
 				<div
 					class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
 				>
@@ -172,9 +179,14 @@
 					/>
 					{likesCount}
 				</button>
-			</div>
+			</StaggerReveal>
 
-			<div class="mt-4 flex flex-nowrap items-center gap-3 sm:mt-8 sm:gap-6">
+			<StaggerReveal
+				delay={230}
+				stagger={90}
+				duration={680}
+				className="mt-4 flex flex-nowrap items-center gap-3 sm:mt-8 sm:gap-6"
+			>
 				<button
 					class="flex shrink-0 items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold whitespace-nowrap text-slate-900 shadow-sm transition-all duration-700 ease-in-out hover:bg-slate-50 sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm dark:border-[#222222] dark:bg-[#111111] dark:text-white dark:hover:bg-[#1a1a1a]"
 				>
@@ -188,7 +200,7 @@
 				>
 					View updates & roadmap
 				</a>
-			</div>
+			</StaggerReveal>
 		</div>
 
 		<!-- Right Column: Big Profile Image (Desktop Only) -->

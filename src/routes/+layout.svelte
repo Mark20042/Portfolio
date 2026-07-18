@@ -10,10 +10,18 @@
 	let { children } = $props();
 	let isDark = $state(false);
 
-	let isWidePage = $derived($page.url.pathname.startsWith('/projects') || $page.url.pathname.startsWith('/certificates') || $page.url.pathname.startsWith('/gallery') || $page.url.pathname.startsWith('/skills'));
+	let isWidePage = $derived(
+		$page.url.pathname.startsWith('/projects') ||
+			$page.url.pathname.startsWith('/certificates') ||
+			$page.url.pathname.startsWith('/gallery') ||
+			$page.url.pathname.startsWith('/skills')
+	);
 
 	onMount(() => {
-		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+		if (
+			localStorage.theme === 'dark' ||
+			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+		) {
 			isDark = true;
 			document.documentElement.classList.add('dark');
 		} else {
@@ -33,22 +41,25 @@
 	}
 
 	function toggleTheme(event: MouseEvent) {
-		const isAppearanceTransition = document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const canUseTransition =
+			'startViewTransition' in document &&
+			!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-		if (!isAppearanceTransition) {
+		if (!canUseTransition) {
 			isDark = !isDark;
 			updateTheme();
 			return;
 		}
 
+		const viewDocument = document as Document & {
+			startViewTransition: (callback: () => void) => ViewTransition;
+		};
+
 		const x = event.clientX;
 		const y = event.clientY;
-		const endRadius = Math.hypot(
-			Math.max(x, innerWidth - x),
-			Math.max(y, innerHeight - y)
-		);
+		const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
 
-		const transition = document.startViewTransition(() => {
+		const transition = viewDocument.startViewTransition(() => {
 			flushSync(() => {
 				isDark = !isDark;
 				updateTheme();
@@ -56,13 +67,10 @@
 		});
 
 		transition.ready.then(() => {
-			const clipPath = [
-				`circle(0px at ${x}px ${y}px)`,
-				`circle(${endRadius}px at ${x}px ${y}px)`
-			];
+			const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`];
 			document.documentElement.animate(
 				{
-					clipPath: clipPath,
+					clipPath: clipPath
 				},
 				{
 					duration: 1000,
@@ -79,12 +87,19 @@
 	<title>Mark Joseph Potot</title>
 </svelte:head>
 
-<div class="min-h-screen bg-white text-slate-900 dark:bg-[#111111] dark:text-slate-50 selection:bg-black/10 dark:selection:bg-white/10 flex flex-col">
-	
+<div
+	class="flex min-h-screen flex-col bg-white text-slate-900 selection:bg-black/10 dark:bg-[#111111] dark:text-slate-50 dark:selection:bg-white/10"
+>
 	<!-- Top Full-Width GitHub Grid Banner -->
-	<div class="absolute top-0 inset-x-0 h-35 bg-github-grid opacity-30 dark:opacity-15 [mask-image:linear-gradient(to_bottom,black_40%,transparent)] z-0 pointer-events-none"></div>
+	<div
+		class="bg-github-grid pointer-events-none absolute inset-x-0 top-0 z-0 h-35 [mask-image:linear-gradient(to_bottom,black_40%,transparent)] opacity-30 dark:opacity-15"
+	></div>
 
-	<main class="relative z-10 mx-auto px-4 sm:px-6 pt-20 sm:pt-38 pb-48 sm:pb-80 w-full flex-1 {isWidePage ? 'max-w-5xl xl:max-w-6xl' : 'max-w-3xl'}">
+	<main
+		class="relative z-10 mx-auto w-full flex-1 px-4 pt-20 pb-48 sm:px-6 sm:pt-38 sm:pb-80 {isWidePage
+			? 'max-w-5xl xl:max-w-6xl'
+			: 'max-w-3xl'}"
+	>
 		{@render children()}
 	</main>
 

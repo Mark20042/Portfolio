@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { projectsData, type ProjectItem } from '$lib/data/projects';
 	import { onMount } from 'svelte';
-	
+	import Reveal from '$lib/components/Reveal.svelte';
+
 	let currentPage = $state(1);
 	const itemsPerPage = 4;
-	
+
 	let totalPages = $derived(Math.ceil(projectsData.length / itemsPerPage));
-	let currentProjects = $derived(projectsData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage));
+	let currentProjects = $derived(
+		projectsData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+	);
 
 	let selectedProject = $state<ProjectItem | null>(null);
 
@@ -37,80 +40,199 @@
 
 <svelte:head>
 	<title>Projects | Mark Joseph Potot</title>
-	<meta name="description" content="A collection of my recent projects, from web applications to robotics." />
+	<meta
+		name="description"
+		content="A collection of my recent projects, from web applications to robotics."
+	/>
 </svelte:head>
 
-<div class="min-h-screen pt-8 px-4 sm:px-8 xl:px-12 max-w-screen-2xl mx-auto flex flex-col relative z-10">
+<div
+	class="relative z-10 mx-auto flex min-h-screen max-w-screen-2xl flex-col px-4 pt-8 sm:px-8 xl:px-12"
+>
 	<div class="mb-10 shrink-0">
-		<a href="/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors mb-6">
-			<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+		<a
+			href="/"
+			class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+		>
+			<svg
+				class="h-4 w-4"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"
+				></polyline></svg
+			>
 			Back to Home
 		</a>
-		<h1 class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">All Projects</h1>
+		<h1 class="mb-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+			All Projects
+		</h1>
 		<p class="text-lg text-slate-600 dark:text-slate-400">
 			A full archive of my projects spanning full-stack development, AI, robotics, and design.
 		</p>
 	</div>
 
 	<!-- Project Grid (Image Cards) -->
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 mb-12">
-		{#each currentProjects as project}
-			<button 
-				type="button"
-				onclick={() => selectedProject = project}
-				class="relative w-full aspect-[4/3] sm:aspect-video rounded-3xl overflow-hidden group shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 bg-slate-100 dark:bg-[#111] border border-slate-200 dark:border-[#222] text-left cursor-pointer"
-			>
-				<!-- Image Section -->
-				{#if project.images && project.images.length > 0}
-					{#each project.images as img, i}
-						<img width="800" height="600" loading="lazy" decoding="async" src={img} 
-							alt={project.title} 
-							class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out {(tick % project.images.length) === i ? 'opacity-100 scale-100' : 'opacity-0 scale-105'} group-hover:scale-105" 
-						/>
-					{/each}
-				{:else}
-					<img width="800" height="600" loading="lazy" decoding="async" src={project.image} 
-						alt={project.title} 
-						class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
-					/>
-				{/if}
+	<div class="mb-12 grid grid-cols-1 gap-6 sm:gap-10 md:grid-cols-2">
+		{#each currentProjects as project, idx}
+			<Reveal delay={70 + idx * 80} distance={22}>
+				<div
+					class="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg transition-all duration-500 hover:shadow-2xl dark:border-[#222] dark:bg-[#111]"
+				>
+					<button
+						type="button"
+						onclick={() => (selectedProject = project)}
+						class="group relative aspect-[4/3] w-full cursor-pointer overflow-hidden bg-slate-100 text-left sm:aspect-video dark:bg-[#1a1a1a]"
+					>
+						<!-- Image Section -->
+						{#if project.images && project.images.length > 0}
+							{#each project.images as img, i}
+								<img
+									width="800"
+									height="600"
+									loading="lazy"
+									decoding="async"
+									src={img}
+									alt={project.title}
+									class="absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-in-out {tick %
+										project.images.length ===
+									i
+										? 'scale-100 opacity-100'
+										: 'scale-105 opacity-0'} group-hover:scale-105"
+								/>
+							{/each}
+						{:else}
+							<img
+								width="800"
+								height="600"
+								loading="lazy"
+								decoding="async"
+								src={project.image}
+								alt={project.title}
+								class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+							/>
+						{/if}
 
-				<!-- Hover Overlay -->
-				<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<!-- Hover Overlay -->
+						<div
+							class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+						></div>
 
-				<!-- Text Content (visible on hover) -->
-				<div class="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-					<p class="text-cyan-400 font-bold text-xs sm:text-sm uppercase tracking-wider mb-2 drop-shadow-md">{project.category}</p>
-					<h3 class="text-2xl sm:text-3xl font-bold text-white drop-shadow-lg mb-4">{project.title}</h3>
-					
-					<div class="flex items-center gap-2 text-white/80 font-medium text-sm">
-						<span>View Details</span>
-						<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+						<!-- Text Content (visible on hover) -->
+						<div
+							class="absolute inset-0 flex translate-y-4 flex-col justify-end p-8 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
+						>
+							<p
+								class="mb-2 text-xs font-bold tracking-wider text-cyan-400 uppercase drop-shadow-md sm:text-sm"
+							>
+								{project.category}
+							</p>
+							<h3 class="mb-4 text-2xl font-bold text-white drop-shadow-lg sm:text-3xl">
+								{project.title}
+							</h3>
+
+							<div class="flex items-center gap-2 text-sm font-medium text-white/80">
+								<span>View Details</span>
+								<svg
+									class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"
+									></polyline></svg
+								>
+							</div>
+						</div>
+					</button>
+
+					<div class="flex flex-col gap-3 px-5 py-4 sm:px-6 sm:py-5">
+						<button type="button" onclick={() => (selectedProject = project)} class="text-left">
+							<h3
+								class="text-lg leading-tight font-bold text-slate-900 transition-colors hover:text-sky-500 sm:text-xl dark:text-white"
+							>
+								{project.title}
+							</h3>
+						</button>
+
+						{#if project.githubLink || project.liveDemoLink}
+							<div class="flex flex-wrap gap-2.5">
+								{#if project.githubLink}
+									<a
+										href={project.githubLink}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700 transition-all hover:scale-105 hover:border-slate-400 hover:bg-white dark:border-[#333] dark:bg-[#222] dark:text-slate-300 dark:hover:border-[#555] dark:hover:bg-[#2a2a2a]"
+									>
+										<svg
+											class="h-3.5 w-3.5"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											><path
+												d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+											></path></svg
+										> GitHub
+									</a>
+								{/if}
+								{#if project.liveDemoLink}
+									<a
+										href={project.liveDemoLink}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700 transition-all hover:scale-105 hover:border-slate-400 hover:bg-white dark:border-[#333] dark:bg-[#222] dark:text-slate-300 dark:hover:border-[#555] dark:hover:bg-[#2a2a2a]"
+									>
+										<svg
+											class="h-3.5 w-3.5"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											><circle cx="12" cy="12" r="10" /><path
+												d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+											/><path d="M2 12h20" /></svg
+										> Live Demo
+									</a>
+								{/if}
+							</div>
+						{/if}
 					</div>
 				</div>
-			</button>
+			</Reveal>
 		{/each}
 	</div>
 
 	<!-- Pagination -->
 	{#if totalPages > 1}
-		<div class="flex items-center justify-between w-full mt-auto pt-8 border-t border-slate-200 dark:border-[#222]">
+		<div
+			class="mt-auto flex w-full items-center justify-between border-t border-slate-200 pt-8 dark:border-[#222]"
+		>
 			<span class="text-sm font-semibold text-slate-600 dark:text-slate-400">
 				Page {currentPage} of {totalPages}
 			</span>
-			
+
 			<div class="flex items-center gap-2">
-				<button 
-					onclick={prevPage} 
+				<button
+					onclick={prevPage}
 					disabled={currentPage === 1}
-					class="px-4 py-2 rounded-lg border border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#151515] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-[#1f1f1f] disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold text-sm"
+					class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#2a2a2a] dark:bg-[#151515] dark:text-slate-300 dark:hover:bg-[#1f1f1f]"
 				>
 					Previous
 				</button>
-				<button 
-					onclick={nextPage} 
+				<button
+					onclick={nextPage}
 					disabled={currentPage === totalPages}
-					class="px-4 py-2 rounded-lg border border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#151515] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-[#1f1f1f] disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold text-sm"
+					class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#2a2a2a] dark:bg-[#151515] dark:text-slate-300 dark:hover:bg-[#1f1f1f]"
 				>
 					Next
 				</button>
@@ -123,71 +245,143 @@
 {#if selectedProject}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div 
-		class="fixed inset-0 bg-black/60 backdrop-blur-md z-[100] flex items-center justify-center p-4 sm:p-6"
-		onclick={() => selectedProject = null}
+	<div
+		class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-md sm:p-6"
+		onclick={() => (selectedProject = null)}
 	>
-		<div 
-			class="bg-white dark:bg-[#111111] border border-slate-200 dark:border-[#222] rounded-[2rem] w-full max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col relative animate-in fade-in zoom-in-95 duration-300"
+		<div
+			class="animate-in fade-in zoom-in-95 relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-2xl duration-300 sm:rounded-[2rem] dark:border-[#222] dark:bg-[#111111]"
 			onclick={(e) => e.stopPropagation()}
 		>
 			<!-- Close button -->
 			<div class="absolute top-4 right-4 z-20">
-				<button 
-					onclick={() => selectedProject = null}
-					class="p-2.5 bg-black/50 hover:bg-black/80 backdrop-blur-md rounded-full text-white transition-all hover:scale-110"
+				<button
+					onclick={() => (selectedProject = null)}
+					class="rounded-full bg-black/50 p-2.5 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-black/80"
 					aria-label="Close modal"
 				>
-					<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+					<svg
+						class="h-5 w-5"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"
+						></line></svg
+					>
 				</button>
 			</div>
 
 			<!-- Image hero in modal -->
-			<div class="relative w-full h-64 sm:h-[400px] shrink-0 bg-slate-100 dark:bg-[#1a1a1a]">
+			<div class="relative h-48 w-full shrink-0 bg-slate-100 sm:h-[350px] dark:bg-[#1a1a1a]">
 				{#if selectedProject.images && selectedProject.images.length > 0}
-					<img width="800" height="600" loading="lazy" decoding="async" src={selectedProject.images[tick % selectedProject.images.length]} alt={selectedProject.title} class="w-full h-full object-cover" />
+					<img
+						width="800"
+						height="600"
+						loading="lazy"
+						decoding="async"
+						src={selectedProject.images[tick % selectedProject.images.length]}
+						alt={selectedProject.title}
+						class="h-full w-full object-cover"
+					/>
 				{:else}
-					<img width="800" height="600" loading="lazy" decoding="async" src={selectedProject.image} alt={selectedProject.title} class="w-full h-full object-cover" />
+					<img
+						width="800"
+						height="600"
+						loading="lazy"
+						decoding="async"
+						src={selectedProject.image}
+						alt={selectedProject.title}
+						class="h-full w-full object-cover"
+					/>
 				{/if}
 				<!-- Fade bottom edge for smooth transition into content -->
-				<div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-[#111111] to-transparent"></div>
+				<div
+					class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent dark:from-[#111111]"
+				></div>
 			</div>
 
 			<!-- Modal Body -->
-			<div class="p-8 sm:p-12 flex flex-col -mt-8 relative z-10">
-				<div class="flex flex-col md:flex-row items-start justify-between gap-6 mb-8">
+			<div class="relative z-10 -mt-8 flex flex-col p-5 sm:p-10">
+				<div class="mb-8 flex flex-col items-start justify-between gap-6 md:flex-row">
 					<div>
-						<p class="text-sm font-bold text-sky-500 uppercase tracking-widest mb-2">{selectedProject.category}</p>
-						<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">{selectedProject.title}</h2>
+						<p class="mb-2 text-sm font-bold tracking-widest text-sky-500 uppercase">
+							{selectedProject.category}
+						</p>
+						<h2
+							class="text-3xl leading-tight font-bold text-slate-900 sm:text-4xl md:text-5xl dark:text-white"
+						>
+							{selectedProject.title}
+						</h2>
 					</div>
-					
-					<div class="flex flex-wrap gap-3 shrink-0 mt-2 md:mt-0">
+
+					<div class="mt-2 flex shrink-0 flex-wrap gap-3 md:mt-0">
 						{#if selectedProject.liveDemoLink}
-							<a href={selectedProject.liveDemoLink} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-md">
-								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+							<a
+								href={selectedProject.liveDemoLink}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2.5 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105 dark:border-[#333] dark:bg-[#222] dark:text-white"
+							>
+								<svg
+									class="h-4 w-4"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									><circle cx="12" cy="12" r="10" /><path
+										d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+									/><path d="M2 12h20" /></svg
+								>
 								Live Site
 							</a>
 						{/if}
 						{#if selectedProject.githubLink}
-							<a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-[#222] text-slate-900 dark:text-white rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-sm border border-slate-200 dark:border-[#333]">
-								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+							<a
+								href={selectedProject.githubLink}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2.5 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105 dark:border-[#333] dark:bg-[#222] dark:text-white"
+							>
+								<svg
+									class="h-4 w-4"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									><path
+										d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+									></path></svg
+								>
 								Source Code
 							</a>
 						{/if}
 					</div>
 				</div>
 
-				<div class="prose prose-slate dark:prose-invert max-w-none mb-10">
-					<p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+				<div class="prose mb-10 max-w-none prose-slate dark:prose-invert">
+					<p class="text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
 						{selectedProject.description}
 					</p>
 				</div>
 
 				<div class="mt-auto">
-					<h4 class="text-xs font-bold text-slate-600 dark:text-slate-400 mb-4 uppercase tracking-widest">Technologies Used</h4>
+					<h4
+						class="mb-4 text-xs font-bold tracking-widest text-slate-600 uppercase dark:text-slate-400"
+					>
+						Technologies Used
+					</h4>
 					<div class="flex flex-wrap gap-2.5">
 						{#each selectedProject.techStack as tag}
-							<span class="px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl shadow-sm">
+							<span
+								class="rounded-xl border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm dark:border-[#2a2a2a] dark:bg-[#1a1a1a] dark:text-slate-300"
+							>
 								{tag}
 							</span>
 						{/each}

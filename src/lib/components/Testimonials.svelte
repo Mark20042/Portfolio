@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+
 	import { Sparkles, X, Check, Star } from 'lucide-svelte';
 	
 	let testimonials = $state<any[]>([]);
@@ -15,6 +17,7 @@
 	let submittedSuccess = $state(false);
 
 	onMount(async () => {
+		if (!browser) return;
 		try {
 			const res = await fetch('/api/testimonials');
 			if (res.ok) {
@@ -122,8 +125,8 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4" onclick={() => showModal = false}>
-		<div class="bg-white dark:bg-[#111111] border border-slate-200 dark:border-[#222] p-8 rounded-3xl w-full max-w-md relative" onclick={(e) => e.stopPropagation()}>
-			<button onclick={() => { showModal = false; submittedSuccess = false; }} class="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+		<div class="bg-white dark:bg-[#111111] border border-slate-200 dark:border-[#222] p-5 sm:p-8 rounded-2xl sm:rounded-3xl w-full max-w-md relative" onclick={(e) => e.stopPropagation()}>
+			<button onclick={() => { showModal = false; submittedSuccess = false; }} class="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
 				<X class="w-5 h-5" />
 			</button>
 			

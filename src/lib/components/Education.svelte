@@ -1,4 +1,6 @@
 <script lang="ts">
+	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
+
 	import crmcImg from '$lib/images/schools/crmc.webp';
 	import cbshsImg from '$lib/images/schools/cbshs.webp';
 	import mnhsImg from '$lib/images/schools/mnhs.webp';
@@ -37,7 +39,7 @@
 		Education
 	</h2>
 
-	<div class="flex flex-col gap-6 sm:gap-8">
+	<StaggerReveal delay={70} stagger={95} duration={700} className="flex flex-col gap-6 sm:gap-8">
 		{#each educationList as edu}
 			<div class="group flex items-center justify-between">
 				<div class="flex items-center gap-4">
@@ -72,5 +74,5 @@
 				</div>
 			</div>
 		{/each}
-	</div>
+	</StaggerReveal>
 </div>
