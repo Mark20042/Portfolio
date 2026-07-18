@@ -134,7 +134,7 @@
 				class="mb-3 flex items-center gap-1.5 text-sm font-medium text-slate-700 sm:text-base dark:text-slate-300"
 			>
 				<MapPin class="h-4 w-4 text-slate-600 dark:text-slate-400" />
-				Cayang Bogo City, Cebu, Philippines
+				Lahug Cebu City, Cebu, Philippines
 			</div>
 
 			<div
