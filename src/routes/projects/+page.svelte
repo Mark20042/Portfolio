@@ -2,6 +2,7 @@
 	import { projectsData, type ProjectItem } from '$lib/data/projects';
 	import { onMount } from 'svelte';
 	import Reveal from '$lib/components/Reveal.svelte';
+	import { portal } from '$lib/actions/portal';
 
 	let currentPage = $state(1);
 	const itemsPerPage = 4;
@@ -246,11 +247,14 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-md sm:p-6"
+		use:portal
+		class="fixed inset-0 z-[200] flex items-start justify-center overflow-y-auto bg-black/60 p-3 backdrop-blur-md sm:items-center sm:p-6"
+		style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100dvh;"
 		onclick={() => (selectedProject = null)}
 	>
 		<div
-			class="animate-in fade-in zoom-in-95 relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-2xl duration-300 sm:rounded-[2rem] dark:border-[#222] dark:bg-[#111111]"
+			class="relative my-auto flex w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl sm:rounded-[2rem] dark:border-[#222] dark:bg-[#111111]"
+			style="max-height: calc(100dvh - 1.5rem);"
 			onclick={(e) => e.stopPropagation()}
 		>
 			<!-- Close button -->
@@ -274,117 +278,120 @@
 				</button>
 			</div>
 
-			<!-- Image hero in modal -->
-			<div class="relative h-48 w-full shrink-0 bg-slate-100 sm:h-[350px] dark:bg-[#1a1a1a]">
-				{#if selectedProject.images && selectedProject.images.length > 0}
-					<img
-						width="800"
-						height="600"
-						loading="lazy"
-						decoding="async"
-						src={selectedProject.images[tick % selectedProject.images.length]}
-						alt={selectedProject.title}
-						class="h-full w-full object-cover"
-					/>
-				{:else}
-					<img
-						width="800"
-						height="600"
-						loading="lazy"
-						decoding="async"
-						src={selectedProject.image}
-						alt={selectedProject.title}
-						class="h-full w-full object-cover"
-					/>
-				{/if}
-				<!-- Fade bottom edge for smooth transition into content -->
-				<div
-					class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent dark:from-[#111111]"
-				></div>
-			</div>
+			<!-- Scrollable inner content -->
+			<div class="overflow-y-auto" style="max-height: calc(100dvh - 1.5rem);">
+				<!-- Image hero in modal -->
+				<div class="relative h-48 w-full shrink-0 bg-slate-100 sm:h-[350px] dark:bg-[#1a1a1a]">
+					{#if selectedProject.images && selectedProject.images.length > 0}
+						<img
+							width="800"
+							height="600"
+							loading="lazy"
+							decoding="async"
+							src={selectedProject.images[tick % selectedProject.images.length]}
+							alt={selectedProject.title}
+							class="h-full w-full object-cover"
+						/>
+					{:else}
+						<img
+							width="800"
+							height="600"
+							loading="lazy"
+							decoding="async"
+							src={selectedProject.image}
+							alt={selectedProject.title}
+							class="h-full w-full object-cover"
+						/>
+					{/if}
+					<!-- Fade bottom edge for smooth transition into content -->
+					<div
+						class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent dark:from-[#111111]"
+					></div>
+				</div>
 
-			<!-- Modal Body -->
-			<div class="relative z-10 -mt-8 flex flex-col p-5 sm:p-10">
-				<div class="mb-8 flex flex-col items-start justify-between gap-6 md:flex-row">
-					<div>
-						<p class="mb-2 text-sm font-bold tracking-widest text-sky-500 uppercase">
-							{selectedProject.category}
+				<!-- Modal Body -->
+				<div class="relative z-10 -mt-8 flex flex-col p-5 sm:p-10">
+					<div class="mb-8 flex flex-col items-start justify-between gap-6 md:flex-row">
+						<div>
+							<p class="mb-2 text-sm font-bold tracking-widest text-sky-500 uppercase">
+								{selectedProject.category}
+							</p>
+							<h2
+								class="text-3xl leading-tight font-bold text-slate-900 sm:text-4xl md:text-5xl dark:text-white"
+							>
+								{selectedProject.title}
+							</h2>
+						</div>
+
+						<div class="mt-2 flex shrink-0 flex-wrap gap-3 md:mt-0">
+							{#if selectedProject.liveDemoLink}
+								<a
+									href={selectedProject.liveDemoLink}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2.5 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105 dark:border-[#333] dark:bg-[#222] dark:text-white"
+								>
+									<svg
+										class="h-4 w-4"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										><circle cx="12" cy="12" r="10" /><path
+											d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+										/><path d="M2 12h20" /></svg
+									>
+									Live Site
+								</a>
+							{/if}
+							{#if selectedProject.githubLink}
+								<a
+									href={selectedProject.githubLink}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2.5 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105 dark:border-[#333] dark:bg-[#222] dark:text-white"
+								>
+									<svg
+										class="h-4 w-4"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										><path
+											d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+										></path></svg
+									>
+									Source Code
+								</a>
+							{/if}
+						</div>
+					</div>
+
+					<div class="prose mb-10 max-w-none prose-slate dark:prose-invert">
+						<p class="text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
+							{selectedProject.description}
 						</p>
-						<h2
-							class="text-3xl leading-tight font-bold text-slate-900 sm:text-4xl md:text-5xl dark:text-white"
+					</div>
+
+					<div class="mt-auto">
+						<h4
+							class="mb-4 text-xs font-bold tracking-widest text-slate-600 uppercase dark:text-slate-400"
 						>
-							{selectedProject.title}
-						</h2>
-					</div>
-
-					<div class="mt-2 flex shrink-0 flex-wrap gap-3 md:mt-0">
-						{#if selectedProject.liveDemoLink}
-							<a
-								href={selectedProject.liveDemoLink}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2.5 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105 dark:border-[#333] dark:bg-[#222] dark:text-white"
-							>
-								<svg
-									class="h-4 w-4"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									><circle cx="12" cy="12" r="10" /><path
-										d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-									/><path d="M2 12h20" /></svg
+							Technologies Used
+						</h4>
+						<div class="flex flex-wrap gap-2.5">
+							{#each selectedProject.techStack as tag}
+								<span
+									class="rounded-xl border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm dark:border-[#2a2a2a] dark:bg-[#1a1a1a] dark:text-slate-300"
 								>
-								Live Site
-							</a>
-						{/if}
-						{#if selectedProject.githubLink}
-							<a
-								href={selectedProject.githubLink}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2.5 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105 dark:border-[#333] dark:bg-[#222] dark:text-white"
-							>
-								<svg
-									class="h-4 w-4"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									><path
-										d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-									></path></svg
-								>
-								Source Code
-							</a>
-						{/if}
-					</div>
-				</div>
-
-				<div class="prose mb-10 max-w-none prose-slate dark:prose-invert">
-					<p class="text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
-						{selectedProject.description}
-					</p>
-				</div>
-
-				<div class="mt-auto">
-					<h4
-						class="mb-4 text-xs font-bold tracking-widest text-slate-600 uppercase dark:text-slate-400"
-					>
-						Technologies Used
-					</h4>
-					<div class="flex flex-wrap gap-2.5">
-						{#each selectedProject.techStack as tag}
-							<span
-								class="rounded-xl border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm dark:border-[#2a2a2a] dark:bg-[#1a1a1a] dark:text-slate-300"
-							>
-								{tag}
-							</span>
-						{/each}
+									{tag}
+								</span>
+							{/each}
+						</div>
 					</div>
 				</div>
 			</div>

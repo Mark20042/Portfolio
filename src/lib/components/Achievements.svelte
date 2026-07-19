@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { achievementGroups, type AchievementItem } from '$lib/data/achievements';
 	import Reveal from '$lib/components/Reveal.svelte';
+	import { portal } from '$lib/actions/portal';
 
 	// Flatten all items and grab the ones explicitly marked as featured
 	const allAchievements = achievementGroups.flatMap((group) => group.items);
@@ -116,7 +117,9 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="fixed inset-0 z-100 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-8"
+		use:portal
+		class="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-8"
+		style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100dvh;"
 		onclick={() => (selectedCert = null)}
 	>
 		<div
