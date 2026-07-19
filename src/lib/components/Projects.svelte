@@ -183,11 +183,11 @@
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
-			class="fixed inset-0 z-100 flex items-start justify-center overflow-y-auto bg-black/60 p-3 backdrop-blur-md sm:items-center sm:p-6"
+			class="fixed inset-0 z-100 flex h-[100dvh] w-[100vw] items-start justify-center overflow-y-auto bg-black/60 p-3 backdrop-blur-md sm:items-center sm:p-6"
 			onclick={() => (selectedProject = null)}
 		>
 			<div
-				class="animate-in fade-in zoom-in-95 relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl duration-300 sm:max-h-[calc(100dvh-3rem)] sm:rounded-4xl dark:border-[#222] dark:bg-[#111111]"
+				class="animate-in fade-in zoom-in-95 relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-[min(96vw,80rem)] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl duration-300 sm:max-h-[calc(100dvh-3rem)] sm:rounded-4xl dark:border-[#222] dark:bg-[#111111]"
 				onclick={(e) => e.stopPropagation()}
 			>
 				<!-- Close button -->
