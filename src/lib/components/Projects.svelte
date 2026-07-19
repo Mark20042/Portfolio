@@ -70,7 +70,7 @@
 				</button>
 
 				<div
-					class="mb-5 h-px w-full bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-slate-700"
+					class="mb-5 h-px w-full bg-linear-to-r from-transparent via-slate-300 to-transparent dark:via-slate-700"
 				></div>
 
 				<button
@@ -78,7 +78,7 @@
 					onclick={() => (selectedProject = project)}
 					class="group relative w-full cursor-pointer overflow-hidden rounded-2xl bg-slate-100 dark:bg-[#1a1a1a]"
 				>
-					<div class="relative aspect-[16/9] w-full">
+					<div class="relative aspect-video w-full">
 						{#if project.images && project.images.length > 0}
 							{#each project.images as img, i}
 								<img
@@ -183,11 +183,11 @@
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
-			class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-md sm:p-6"
+			class="fixed inset-0 z-100 flex items-start justify-center overflow-y-auto bg-black/60 p-3 backdrop-blur-md sm:items-center sm:p-6"
 			onclick={() => (selectedProject = null)}
 		>
 			<div
-				class="animate-in fade-in zoom-in-95 relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-2xl duration-300 sm:rounded-[2rem] dark:border-[#222] dark:bg-[#111111]"
+				class="animate-in fade-in zoom-in-95 relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl duration-300 sm:max-h-[calc(100dvh-3rem)] sm:rounded-4xl dark:border-[#222] dark:bg-[#111111]"
 				onclick={(e) => e.stopPropagation()}
 			>
 				<!-- Close button -->
@@ -212,7 +212,7 @@
 				</div>
 
 				<!-- Image hero in modal -->
-				<div class="relative h-48 w-full shrink-0 bg-slate-100 sm:h-[350px] dark:bg-[#1a1a1a]">
+				<div class="relative h-44 w-full shrink-0 bg-slate-100 sm:h-87.5 dark:bg-[#1a1a1a]">
 					{#if selectedProject.images && selectedProject.images.length > 0}
 						<img
 							src={selectedProject.images[tick % selectedProject.images.length]}
@@ -236,12 +236,14 @@
 					{/if}
 					<!-- Fade bottom edge for smooth transition into content -->
 					<div
-						class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent dark:from-[#111111]"
+						class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-white to-transparent dark:from-[#111111]"
 					></div>
 				</div>
 
 				<!-- Modal Body -->
-				<div class="relative z-10 -mt-8 flex flex-col p-5 sm:p-10">
+				<div
+					class="relative z-10 flex-1 overflow-y-auto px-5 pt-5 pb-6 sm:-mt-8 sm:px-10 sm:pt-8 sm:pb-10"
+				>
 					<div class="mb-8 flex flex-col items-start justify-between gap-6 md:flex-row">
 						<div>
 							<p class="mb-2 text-sm font-bold tracking-widest text-sky-500 uppercase">
