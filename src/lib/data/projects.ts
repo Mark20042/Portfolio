@@ -42,8 +42,8 @@ export const projectsData: ProjectItem[] = [
 		image: linog1,
 		images: [linog, linog1, linog2],
 		techStack: ['Vue.js', 'Web Scraping', 'Leaflet', 'OpenStreetMap', 'CSS'],
-		githubLink: undefined,
-		liveDemoLink: undefined,
+		githubLink: 'https://github.com/Mark20042/linog-tracker',
+		liveDemoLink: 'https://linogtrackerazoredev.vercel.app/',
 		featured: true
 	},
 	{
