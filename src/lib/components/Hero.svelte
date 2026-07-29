@@ -6,7 +6,7 @@
 	import { browser } from '$app/environment';
 	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
 
-	import { Eye, Star, Heart, MapPin, Github, Gamepad2 } from 'lucide-svelte';
+	import { Eye, Star, Heart, MapPin, Github, Gamepad2, Play } from 'lucide-svelte';
 
 	let mounted = $state(false);
 
@@ -91,18 +91,18 @@
 	>
 		<!-- Left Column: Badges & Text -->
 		<div class="mt-2 flex-1 md:mt-0">
-			<!-- Mobile Profile Image (Visible only on mobile, placed at the top) -->
+			
 			<div
 				class="group relative mb-6 h-36 w-36 shrink-0 cursor-pointer perspective-[1000px] md:hidden"
 			>
-				<!-- Glowing ethereal backdrop that expands and fades in on hover -->
+				
 				<div
 					class="absolute inset-0 scale-90 rounded-3xl bg-gradient-to-tr from-sky-500 via-purple-500 to-blue-500 opacity-60 blur-2xl dark:opacity-40"
 				></div>
 
-				<!-- Bouncy Image Container with Tilt & Glow -->
+				
 				<div class="relative z-10 h-full w-full overflow-hidden rounded-3xl">
-					<!-- Cinematic Grayscale to Color Transition -->
+				
 					<img
 						src={myImage}
 						alt="Mark Joseph Potot"
@@ -152,7 +152,7 @@
 				</div>
 			</StaggerReveal>
 
-			<!-- Stats / Badges (Moved below title for better layout) -->
+			
 			<StaggerReveal delay={170} stagger={80} duration={700} className="mb-6 flex flex-wrap gap-3">
 				<div
 					class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
@@ -216,21 +216,65 @@
 				</a>
 			</StaggerReveal>
 
-			<StaggerReveal delay={290} stagger={100} duration={650} className="mt-4 sm:mt-5">
+			<StaggerReveal delay={290} stagger={100} duration={650} className="mt-4 flex flex-wrap items-center gap-3 sm:mt-5">
 				<a
-					href="https://azore-world.vercel.app"
-					target="_blank"
-					rel="noopener noreferrer"
+					href="#games"
+					onclick={(e) => {
+						e.preventDefault();
+						document.getElementById('games')?.scrollIntoView({ behavior: 'smooth' });
+					}}
 					class="group relative inline-flex w-fit items-center gap-1.5 overflow-hidden rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-1.5 text-[11px] font-bold tracking-wide text-white shadow-[0_8px_16px_-6px_rgba(16,185,129,0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_20px_-6px_rgba(16,185,129,0.7)] sm:text-xs"
 				>
-					<!-- Inner sheen effect -->
+				
 					<div
 						class="animate-sheen absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent"
 					></div>
-					<span class="relative z-10">Play Azore World</span>
-					<Gamepad2
-						class="relative z-10 h-3 w-3 text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:scale-110 sm:h-3.5 sm:w-3.5"
-					/>
+					
+					<span class="relative z-10 flex items-center animate-games-track">
+						<Gamepad2 class="mr-1.5 h-3 w-3 shrink-0 text-white sm:h-3.5 sm:w-3.5 animate-games-icon-left" />
+						
+						<span class="whitespace-nowrap">Play My Games</span>
+
+						<Play class="absolute left-full ml-1.5 h-3 w-3 shrink-0 fill-white text-white opacity-0 sm:h-3.5 sm:w-3.5 animate-games-icon-right" />
+					</span>
+					
+				</a>
+				
+				<a
+					href="#projects"
+					onclick={(e) => {
+						e.preventDefault();
+						document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+					}}
+					class="group relative inline-flex w-fit items-center gap-1.5 overflow-hidden rounded-full border border-slate-700/50 bg-slate-900/80 px-4 py-1.5 text-[11px] font-bold tracking-wide text-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.15)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-800 hover:text-white hover:shadow-[0_8px_30px_rgba(56,189,248,0.25)] sm:text-xs dark:border-slate-800/80 dark:bg-black/60 dark:hover:border-slate-600 dark:hover:bg-[#111]"
+				>
+					
+					<div
+						class="animate-sheen absolute inset-0 -translate-x-[100%] bg-gradient-to-r from-transparent via-white/30 to-transparent"
+						style="animation-delay: 2.4s;"
+					></div>
+					
+					<span class="relative z-10 flex items-center gap-1.5">
+						Selected Works
+						
+						<div class="relative flex h-3.5 w-3.5 shrink-0 items-center justify-center overflow-visible sm:h-4 sm:w-4">
+						
+							<div class="absolute inset-0 h-full w-full animate-icon-default">
+								<Star class="h-full w-full text-slate-400" />
+							</div>
+						
+							<div class="absolute inset-0 h-full w-full animate-icon-active">
+								<Star class="h-full w-full text-yellow-400 fill-yellow-400" />
+							</div>
+							
+							<svg 
+								class="absolute -right-2 -top-2 h-2.5 w-2.5 text-yellow-200 animate-icon-sparkle" 
+								viewBox="0 0 24 24" fill="currentColor"
+							>
+								<path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z" />
+							</svg>
+						</div>
+					</span>
 				</a>
 			</StaggerReveal>
 		</div>
@@ -239,16 +283,16 @@
 		<div
 			class="group relative hidden h-48 w-48 shrink-0 cursor-pointer perspective-[1000px] md:block"
 		>
-			<!-- Glowing ethereal backdrop that expands and fades in on hover -->
+			
 			<div
 				class="absolute inset-0 scale-90 rounded-3xl bg-gradient-to-tr from-sky-500 via-purple-500 to-blue-500 opacity-0 blur-2xl transition-opacity duration-700 ease-out group-hover:scale-110 group-hover:opacity-60 dark:group-hover:opacity-40"
 			></div>
 
-			<!-- Bouncy Image Container with Tilt & Glow -->
+			
 			<div
 				class="relative z-10 h-full w-full overflow-hidden rounded-3xl transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-3 group-hover:scale-[1.08] group-hover:-rotate-3"
 			>
-				<!-- Cinematic Grayscale to Color Transition -->
+				
 				<img
 					src={myImage}
 					alt="Mark Joseph Potot"
@@ -267,12 +311,54 @@
 	@keyframes sheen {
 		0% {
 			transform: translateX(-100%);
+			animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		}
+		30% {
+			transform: translateX(200%);
 		}
 		100% {
-			transform: translateX(150%);
+			transform: translateX(200%);
 		}
 	}
 	.animate-sheen {
-		animation: sheen 6s infinite ease-in-out;
+		animation: sheen 8s infinite;
 	}
+
+	@keyframes -global-icon-default-pop {
+		0%, 54% { transform: translateY(0) scale(1); opacity: 1; }
+		57%, 76% { transform: translateY(-16px) scale(0.5); opacity: 0; }
+		79%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+	}
+	@keyframes -global-icon-active-pop {
+		0%, 54% { transform: translateY(16px) scale(0.5); opacity: 0; }
+		57%, 76% { transform: translateY(0) scale(1); opacity: 1; }
+		79%, 100% { transform: translateY(16px) scale(0.5); opacity: 0; }
+	}
+	@keyframes -global-icon-sparkle-pop {
+		0%, 55% { transform: translate(0, 8px) rotate(-45deg) scale(0); opacity: 0; }
+		58%, 76% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+		79%, 100% { transform: translate(0, 8px) rotate(-45deg) scale(0); opacity: 0; }
+	}
+	:global(.animate-icon-default) { animation: icon-default-pop 8s infinite cubic-bezier(0.34, 1.56, 0.64, 1); }
+	:global(.animate-icon-active) { animation: icon-active-pop 8s infinite cubic-bezier(0.34, 1.56, 0.64, 1); }
+	:global(.animate-icon-sparkle) { animation: icon-sparkle-pop 8s infinite cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+	@keyframes -global-games-track-slide {
+		0%, 25% { transform: translateX(0); }
+		28%, 45% { transform: translateX(-1.25rem); }
+		48%, 100% { transform: translateX(0); }
+	}
+	@keyframes -global-games-icon-left-fade {
+		0%, 25% { opacity: 1; }
+		28%, 45% { opacity: 0; }
+		48%, 100% { opacity: 1; }
+	}
+	@keyframes -global-games-icon-right-fade {
+		0%, 25% { opacity: 0; }
+		28%, 45% { opacity: 1; }
+		48%, 100% { opacity: 0; }
+	}
+	:global(.animate-games-track) { animation: games-track-slide 8s infinite cubic-bezier(0.34, 1.56, 0.64, 1); }
+	:global(.animate-games-icon-left) { animation: games-icon-left-fade 8s infinite cubic-bezier(0.34, 1.56, 0.64, 1); }
+	:global(.animate-games-icon-right) { animation: games-icon-right-fade 8s infinite cubic-bezier(0.34, 1.56, 0.64, 1); }
 </style>
