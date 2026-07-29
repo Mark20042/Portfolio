@@ -6,7 +6,7 @@
 	import { browser } from '$app/environment';
 	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
 
-	import { Eye, Star, Heart, MapPin } from 'lucide-svelte';
+	import { Eye, Star, Heart, MapPin, Github, Gamepad2 } from 'lucide-svelte';
 
 	let mounted = $state(false);
 
@@ -185,20 +185,52 @@
 				delay={230}
 				stagger={90}
 				duration={680}
-				className="mt-4 flex flex-nowrap items-center gap-3 sm:mt-8 sm:gap-6"
+				className="mt-4 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-6"
 			>
-				<button
-					class="flex shrink-0 items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold whitespace-nowrap text-slate-900 shadow-sm transition-all duration-700 ease-in-out hover:bg-slate-50 sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm dark:border-[#222222] dark:bg-[#111111] dark:text-white dark:hover:bg-[#1a1a1a]"
-				>
-					<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900 sm:h-2 sm:w-2 dark:bg-white"
-					></span>
-					Let's Work Together
-				</button>
 				<a
-					href="/roadmap"
-					class="shrink-0 text-[11px] font-semibold whitespace-nowrap text-slate-600 hover:text-slate-900 sm:text-sm dark:text-slate-400 dark:hover:text-white"
+					href="https://github.com/gayanvoice/top-github-users/blob/main/markdown/followers/philippines.md"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-slate-900 sm:text-sm dark:text-slate-300 dark:hover:text-white"
 				>
-					View updates & roadmap
+					<Github class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+					Rank 190 GitHub in
+					<img
+						src="https://camo.githubusercontent.com/63a8c7227a0afb177ce4c90991f3314944d611f06d78fd4099d4c95e1e0d9b41/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f392f39392f466c61675f6f665f7468655f5068696c697070696e65732e737667"
+						alt="Philippines Flag"
+						class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4"
+					/>
+				</a>
+				<a
+					href="https://www.skills.google/public_profiles/d78b6fd0-7c12-4c4d-9646-24856704ea97"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-blue-600 sm:text-sm dark:text-slate-300 dark:hover:text-blue-400"
+				>
+					<img
+						src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+						alt="Google"
+						class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4"
+					/>
+					83 Google Cloud Badges
+				</a>
+			</StaggerReveal>
+
+			<StaggerReveal delay={290} stagger={100} duration={650} className="mt-4 sm:mt-5">
+				<a
+					href="https://azore-world.vercel.app"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="group relative inline-flex w-fit items-center gap-1.5 overflow-hidden rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-1.5 text-[11px] font-bold tracking-wide text-white shadow-[0_8px_16px_-6px_rgba(16,185,129,0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_20px_-6px_rgba(16,185,129,0.7)] sm:text-xs"
+				>
+					<!-- Inner sheen effect -->
+					<div
+						class="animate-sheen absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent"
+					></div>
+					<span class="relative z-10">Play Azore World</span>
+					<Gamepad2
+						class="relative z-10 h-3 w-3 text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:scale-110 sm:h-3.5 sm:w-3.5"
+					/>
 				</a>
 			</StaggerReveal>
 		</div>
@@ -224,9 +256,23 @@
 					height="192"
 					fetchpriority="high"
 					decoding="sync"
-					class="h-full w-full object-cover brightness-100 contrast-100 drop-shadow-[0_20px_25px_rgba(236,72,153,0.4)] grayscale-0 transition-all duration-700 ease-out group-hover:scale-110"
+					class="h-full w-full object-cover brightness-100 contrast-100 drop-shadow-[0_20px_25px_rgba(236,72,153,0.4)] grayscale-0 transition-all duration-400 ease-out group-hover:scale-110"
 				/>
 			</div>
 		</div>
 	</div>
 {/if}
+
+<style>
+	@keyframes sheen {
+		0% {
+			transform: translateX(-100%);
+		}
+		100% {
+			transform: translateX(150%);
+		}
+	}
+	.animate-sheen {
+		animation: sheen 6s infinite ease-in-out;
+	}
+</style>
