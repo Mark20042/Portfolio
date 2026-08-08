@@ -18,6 +18,10 @@ import vox3 from '$lib/images/projects/vox3.webp';
 import linog from '$lib/images/projects/linog.webp';
 import linog1 from '$lib/images/projects/linog1.webp';
 import linog2 from '$lib/images/projects/linog2.webp';
+import rice from '$lib/images/projects/riceleafdiseasedetection.png';
+import rice1 from '$lib/images/projects/riceleafdiseasedetection1.png';
+import rice2 from '$lib/images/projects/riceleafdiseasedetection2.png';
+
 
 export interface ProjectItem {
 	id: number;
@@ -48,6 +52,19 @@ export const projectsData: ProjectItem[] = [
 	},
 	{
 		id: 2,
+		title: 'Rice Leaf Disease Detection',
+		category: 'AI / Web App',
+		description:
+			'Built for rice farmers who need a fast answer when something looks wrong in the field, without waiting on an agricultural technician. A deep learning image classifier trained on rice leaf photos identifies eight conditions — Bacterial Leaf Blight, Brown Spot, Leaf Blast, Leaf Scald, Narrow Brown Leaf Spot, Sheath Blight, Rice Hispa infestation, and Healthy Rice Leaf — and is served through a FastAPI backend. The React interface lets a farmer upload or snap a photo of a leaf and instantly see the diagnosis with a confidence score, a prediction confidence breakdown across every class, and actionable agricultural guidance covering what the disease is, how to prevent it, and which treatments to apply.',
+		image: rice1,
+		images: [rice, rice1, rice2],
+		techStack: ['React', 'Deep Learning', 'FastAPI', 'Python', 'TensorFlow', 'CSS'],
+		githubLink: undefined,
+		liveDemoLink: 'https://rice-leaf-disease-detection-ten.vercel.app/',
+		featured: true
+	},
+	{
+		id: 3,
 		title: 'VOX - AI Voice Assistant',
 		category: 'AI Platform',
 		description:
@@ -60,7 +77,7 @@ export const projectsData: ProjectItem[] = [
 		featured: false
 	},
 	{
-		id: 3,
+		id: 4,
 		title: 'GradSync',
 		category: 'Career Platform',
 		description:
@@ -104,7 +121,7 @@ export const projectsData: ProjectItem[] = [
 		featured: true
 	},
 	{
-		id: 4,
+		id: 5,
 		title: 'Ravex (Django Car Marketplace)',
 		category: 'Marketplace',
 		description:
@@ -117,7 +134,7 @@ export const projectsData: ProjectItem[] = [
 		featured: false
 	},
 	{
-		id: 5,
+		id: 6,
 		title: 'Kape Sa Amigo (Coffee Shop Website)',
 		category: 'Business Website',
 		description:
@@ -130,7 +147,7 @@ export const projectsData: ProjectItem[] = [
 		featured: false
 	},
 	{
-		id: 6,
+		id: 7,
 		title: 'Arduino Line-Tracing Robot',
 		category: 'Robotics',
 		description:
@@ -143,7 +160,7 @@ export const projectsData: ProjectItem[] = [
 		featured: false
 	},
 	{
-		id: 7,
+		id: 8,
 		title: 'Sumobot (Creative Visionary Award)',
 		category: 'Robotics',
 		description:
@@ -156,7 +173,7 @@ export const projectsData: ProjectItem[] = [
 		featured: true
 	},
 	{
-		id: 8,
+		id: 9,
 		title: 'Vortex Vermillion (Esports Static Website)',
 		category: 'Static Website',
 		description:
