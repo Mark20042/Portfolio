@@ -5,7 +5,7 @@
 	import { portal } from '$lib/actions/portal';
 
 	// Show only Linog Tracker (id:1) and SipaCareer (id:3)
-	const featuredProjects = projectsData.filter((p) => p.id === 1 || p.id === 3);
+	const featuredProjects = projectsData.filter((p) => p.featured === true);
 
 	let selectedProject = $state<ProjectItem | null>(null);
 

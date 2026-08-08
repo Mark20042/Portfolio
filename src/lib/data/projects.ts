@@ -57,7 +57,7 @@ export const projectsData: ProjectItem[] = [
 		techStack: ['React', 'Three.js', 'Python', 'FastAPI', 'WebSockets', 'NLP'],
 		githubLink: undefined,
 		liveDemoLink: undefined,
-		featured: true
+		featured: false
 	},
 	{
 		id: 3,
@@ -114,7 +114,7 @@ export const projectsData: ProjectItem[] = [
 		techStack: ['Django', 'Python', 'SQLite', 'JavaScript', 'Bootstrap', 'HTML/CSS'],
 		githubLink: undefined,
 		liveDemoLink: undefined,
-		featured: true
+		featured: false
 	},
 	{
 		id: 5,
@@ -127,7 +127,7 @@ export const projectsData: ProjectItem[] = [
 		techStack: ['PHP', 'PDO', 'PayPal', 'JavaScript', 'HTML/CSS'],
 		githubLink: undefined,
 		liveDemoLink: undefined,
-		featured: true
+		featured: false
 	},
 	{
 		id: 6,
@@ -140,7 +140,7 @@ export const projectsData: ProjectItem[] = [
 		techStack: ['Arduino', 'C++', 'IR Sensors', 'Motor Driver', 'Robotics'],
 		githubLink: undefined,
 		liveDemoLink: undefined,
-		featured: true
+		featured: false
 	},
 	{
 		id: 7,
@@ -152,7 +152,8 @@ export const projectsData: ProjectItem[] = [
 		images: [sumobot],
 		techStack: ['Arduino', 'C++', 'Ultrasonic Sensors', 'Motor Driver', 'Robotics'],
 		githubLink: undefined,
-		liveDemoLink: undefined
+		liveDemoLink: undefined,
+		featured: true
 	},
 	{
 		id: 8,
