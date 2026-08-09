@@ -21,7 +21,10 @@ import linog2 from '$lib/images/projects/linog2.webp';
 import rice from '$lib/images/projects/riceleafdiseasedetection.png';
 import rice1 from '$lib/images/projects/riceleafdiseasedetection1.png';
 import rice2 from '$lib/images/projects/riceleafdiseasedetection2.png';
-
+import applytrack from '$lib/images/projects/applytrack.png';
+import applytrack0 from '$lib/images/projects/applytrack0.png';
+import applytrack1 from '$lib/images/projects/applytrack1.png';
+import applytrack2 from '$lib/images/projects/applytrack2.png';
 
 export interface ProjectItem {
 	id: number;
@@ -122,6 +125,19 @@ export const projectsData: ProjectItem[] = [
 	},
 	{
 		id: 5,
+		title: 'ApplyTrack',
+		category: 'Web App',
+		description:
+			'My first full-stack project deployed to production, built while learning full stack development. ApplyTrack is a job application tracker for anyone tired of losing their search inside a messy spreadsheet. Built on the MERN stack with a React frontend on Vercel and an Express and MongoDB backend on Render, it wraps the familiarity of an Excel sheet in a proper dashboard. I architected the backend around the MVC pattern, separating Mongoose models, route controllers, and views so the codebase stayed navigable as features grew, and rather than reaching for an off-the-shelf auth provider I wrote my own JWT-based authentication from scratch — learning token signing, verification, and protected route middleware on the server, then passing the token through to the frontend to persist sessions and guard the dashboard. On top of that sits full CRUD over applications and an overview panel surfacing total applications, success rate, and offers received. A pipeline view breaks every application down by status — Pending, Interview, Offer, Accepted, Declined, and Ghosted — alongside a distribution chart and an activity graph so progress over time is visible at a glance.',
+		image: applytrack,
+		images: [applytrack, applytrack0, applytrack1, applytrack2],
+		techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'MVC', 'JWT Auth', 'JavaScript', 'Vercel', 'Render'],
+		githubLink: 'https://github.com/Mark20042/apply-track',
+		liveDemoLink: 'https://apply-track-peach.vercel.app/',
+		featured: true
+	},
+	{
+		id: 6,
 		title: 'Ravex (Django Car Marketplace)',
 		category: 'Marketplace',
 		description:
@@ -134,7 +150,7 @@ export const projectsData: ProjectItem[] = [
 		featured: false
 	},
 	{
-		id: 6,
+		id: 7,
 		title: 'Kape Sa Amigo (Coffee Shop Website)',
 		category: 'Business Website',
 		description:
@@ -147,7 +163,7 @@ export const projectsData: ProjectItem[] = [
 		featured: false
 	},
 	{
-		id: 7,
+		id: 8,
 		title: 'Arduino Line-Tracing Robot',
 		category: 'Robotics',
 		description:
@@ -160,7 +176,7 @@ export const projectsData: ProjectItem[] = [
 		featured: false
 	},
 	{
-		id: 8,
+		id: 9,
 		title: 'Sumobot (Creative Visionary Award)',
 		category: 'Robotics',
 		description:
@@ -173,7 +189,7 @@ export const projectsData: ProjectItem[] = [
 		featured: true
 	},
 	{
-		id: 9,
+		id: 10,
 		title: 'Vortex Vermillion (Esports Static Website)',
 		category: 'Static Website',
 		description:
