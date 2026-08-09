@@ -205,7 +205,7 @@
 					href="https://www.skills.google/public_profiles/d78b6fd0-7c12-4c4d-9646-24856704ea97"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-blue-600 sm:text-sm dark:text-slate-300 dark:hover:text-blue-400"
+					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-yellow-600 sm:text-sm dark:text-slate-300 dark:hover:text-yellow-400"
 				>
 					<img
 						src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
@@ -213,6 +213,22 @@
 						class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4"
 					/>
 					83 Google Cloud Badges
+				</a>
+				<a
+					href="https://certificates.dev/c/a182214f-2817-44f1-aca5-116ab2b162c1"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-blue-600 sm:text-sm dark:text-slate-300 dark:hover:text-blue-400"
+				>
+					<svg
+						class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4 text-blue-600"
+						viewBox="0 0 34 34"
+						fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path d="M33.374 18.88a2.03 2.03 0 0 0 0-2.933l-1.496-1.428a2.02 2.02 0 0 1-.546-2.036l.582-1.984a2.03 2.03 0 0 0-1.468-2.542l-2.008-.488a2.03 2.03 0 0 1-1.492-1.49l-.488-2.01a2.027 2.027 0 0 0-2.54-1.466l-1.986.58a2.02 2.02 0 0 1-2.036-.546l-1.428-1.494a2.026 2.026 0 0 0-2.934 0l-1.428 1.494a2.02 2.02 0 0 1-2.036.546l-1.984-.58a2.03 2.03 0 0 0-2.542 1.466l-.488 2.01a2.02 2.02 0 0 1-1.49 1.49l-2.01.488a2.03 2.03 0 0 0-1.468 2.542l.582 1.984a2.02 2.02 0 0 1-.546 2.036L.628 15.947a2.03 2.03 0 0 0 0 2.934l1.496 1.428c.55.524.76 1.31.546 2.036l-.582 1.986a2.03 2.03 0 0 0 1.468 2.54l2.01.488c.736.18 1.312.754 1.49 1.492l.488 2.008a2.03 2.03 0 0 0 2.542 1.468l1.984-.582c.728-.214 1.514 0 2.036.546l1.428 1.496a2.03 2.03 0 0 0 2.934 0l1.428-1.496a2.03 2.03 0 0 1 2.036-.546l1.986.582a2.03 2.03 0 0 0 2.54-1.468l.488-2.008a2.03 2.03 0 0 1 1.492-1.492l2.008-.488a2.03 2.03 0 0 0 1.468-2.54l-.582-1.986a2.02 2.02 0 0 1 .546-2.036zm-17.77 2.389L13.62 23.25l-5.8-5.8 5.8-5.8 1.984 1.984-3.818 3.816zm4.816 1.982-1.984-1.982 3.818-3.818-3.818-3.816 1.984-1.984 5.8 5.8z" />
+					</svg>
+					Certified Junior React Developer
 				</a>
 			</StaggerReveal>
 
