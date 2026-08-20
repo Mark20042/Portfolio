@@ -25,6 +25,10 @@ import applytrack from '$lib/images/projects/applytrack.png';
 import applytrack0 from '$lib/images/projects/applytrack0.png';
 import applytrack1 from '$lib/images/projects/applytrack1.png';
 import applytrack2 from '$lib/images/projects/applytrack2.png';
+import studentdropout_welcome from '$lib/images/projects/studentdropout_welcome.png';
+import studentdropout_predict from '$lib/images/projects/studentdropout_predict.png';
+import studentdropout_prediction from '$lib/images/projects/studentdropout_prediction.png';
+import studentdropout_medium from '$lib/images/projects/studentdropout_medium.png';
 
 export interface ProjectItem {
 	id: number;
@@ -40,6 +44,7 @@ export interface ProjectItem {
 }
 
 export const projectsData: ProjectItem[] = [
+	
 	{
 		id: 1,
 		title: 'Philippines Linog Tracker',
@@ -61,7 +66,7 @@ export const projectsData: ProjectItem[] = [
 			'Designed to give rice growers a quick response when they suspect an issue in the crop, rather than waiting for the agricultural expert. The AI image classification model, trained using the images of rice leaves, classifies eight rice conditions: Bacterial Leaf Blight, Brown Spot, Leaf Blast, Leaf Scald, Narrow Brown Leaf Spot, Sheath Blight, Rice Hispa infestation, and Healthy Rice Leaf, and is served using a FastAPI backend. The React interface allows a farmer to upload or take a picture of a leaf and would get instant feedback; a diagnosis with a confidence score, confidence breakdown for prediction for all classes and actionable Agriculture advice – on what the disease is, how to prevent it, which treatments to use.',
 		image: rice1,
 		images: [rice, rice1, rice2],
-		techStack: ['React', 'Deep Learning', 'FastAPI', 'Python', 'TensorFlow', 'CSS'],
+		techStack: ['React', 'Deep Learning', 'FastAPI', 'Python', 'TensorFlow', 'CSS', 'Scikit-Learn', 'Numpy', 'Pandas'],
 		githubLink: undefined,
 		liveDemoLink: 'https://rice-leaf-disease-detection-ten.vercel.app/',
 		featured: true
@@ -177,6 +182,19 @@ export const projectsData: ProjectItem[] = [
 	},
 	{
 		id: 9,
+		title: 'AI Student Dropout Predictor',
+		category: 'AI / Web App',
+		description:
+			'An intelligent, machine learning-powered web application designed to assess and predict student dropout risks based on academic, lifestyle, and demographic factors. It features a modern, interactive React frontend and a fast API backend. The system provides real-time percentage predictions and visually distinct risk levels Low, Medium, High alongside actionable, AI-recommended interventions tailored to the student\'s specific risk category. Powered by a pre-trained Logistic Regression model served via FastAPI.',
+		image: studentdropout_predict,
+		images: [studentdropout_welcome, studentdropout_predict, studentdropout_prediction, studentdropout_medium],
+		techStack: ['React 19', 'Vite', 'FastAPI', 'Python 3', 'Scikit-Learn', 'Bootstrap 5', 'Lottie-Web'],
+		githubLink: 'https://github.com/Mark20042/Student_Dropout_Prediction',
+		liveDemoLink: 'https://student-dropout-prediction-xi.vercel.app',
+		featured: true
+	},
+	{
+		id: 10,
 		title: 'Sumobot (Creative Visionary Award)',
 		category: 'Robotics',
 		description:
@@ -189,7 +207,7 @@ export const projectsData: ProjectItem[] = [
 		featured: true
 	},
 	{
-		id: 10,
+		id: 11,
 		title: 'Vortex Vermillion (Esports Static Website)',
 		category: 'Static Website',
 		description:
