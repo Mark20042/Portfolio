@@ -160,12 +160,6 @@
 					<Eye class="h-3.5 w-3.5 text-slate-600 dark:text-slate-400" />
 					{viewsCount} Profile Views
 				</div>
-				<div
-					class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
-				>
-					<Star class="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-					{avgRating}
-				</div>
 				<button
 					onclick={handleLike}
 					class="flex cursor-pointer items-center gap-1.5 rounded-full border bg-white px-3 py-1.5 text-xs font-semibold shadow-sm transition-all duration-300 active:scale-95 dark:bg-slate-900 {hasLiked

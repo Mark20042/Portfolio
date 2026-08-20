@@ -5,9 +5,9 @@
 	import Education from '$lib/components/Education.svelte';
 	import Projects from '$lib/components/Projects.svelte';
 	import Achievements from '$lib/components/Achievements.svelte';
-	import Testimonials from '$lib/components/Testimonials.svelte';
 	import Reveal from '$lib/components/Reveal.svelte';
 	import Game from '$lib/components/Game.svelte';
+	import GithubContributions from '$lib/components/GithubContributions.svelte';
 </script>
 
 <div class="flex flex-col">
@@ -19,5 +19,5 @@
 	<Reveal delay={280}><Game /></Reveal>
 	<Reveal delay={200}><Education /></Reveal>
 	<Reveal delay={320}><Achievements /></Reveal>
-	<Reveal delay={380}><Testimonials /></Reveal>
+	<Reveal delay={320}><GithubContributions /></Reveal>
 </div>
