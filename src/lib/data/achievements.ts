@@ -27,6 +27,9 @@ import ethicalhacking from '$lib/images/certificates/networking/ethicalhacker.we
 import juniorcybersec from '$lib/images/certificates/networking/juniorcybersec.webp';
 import linuxessen from '$lib/images/certificates/networking/linuxessen.webp';
 import cybersecintro from '$lib/images/certificates/networking/cybersectintro.webp';
+import coap from '$lib/images/certificates/cybersec/apipentestercert.png';
+import webpt from '$lib/images/certificates/cybersec/webpenetrationtester.png';
+import netops from '$lib/images/certificates/cybersec/netops.png';
 
 /** Defines the structure for a single achievement item */
 export interface AchievementItem {
@@ -118,6 +121,7 @@ export const achievementGroups: AchievementGroup[] = [
 				date: 'Oct 2025',
 				image: csharp
 			},
+
 			{
 				title: 'SQL (Basic)',
 				issuer: 'HackerRank',
@@ -128,9 +132,9 @@ export const achievementGroups: AchievementGroup[] = [
 				title: 'Javascript Essentials II',
 				issuer: 'Cisco Academy',
 				date: 'Nov 2025',
-				image: jsessen,
-				featured: true
+				image: jsessen
 			},
+			
 			{
 				title: 'HTML Essentials',
 				issuer: 'Cisco Academy',
@@ -148,6 +152,28 @@ export const achievementGroups: AchievementGroup[] = [
 	{
 		category: 'Networking & Cybersecurity',
 		items: [
+			{
+				title: 'Certified Offensive API Pentester (COAP)',
+				issuer: 'AppKademiya',
+				date: 'Aug 2026',
+				image: coap,
+				featured: true
+			},
+			{
+				title: 'Web Penetration Tester',
+				issuer: 'AppKademiya',
+				date: 'Aug 2026',
+				image: webpt,
+				featured: true
+			},
+			{
+				title: 'Certified Network Operations Engineer',
+				issuer: 'AppKademiya',
+				date: 'Aug 2026',
+				image: netops,
+				featured: true
+			},
+			
 			{
 				title: 'Networking Basics',
 				issuer: 'Cisco Academy',
@@ -178,7 +204,8 @@ export const achievementGroups: AchievementGroup[] = [
 				issuer: 'Cisco Academy',
 				date: 'Nov 2025',
 				image: cybersecintro
-			}
+			},
+
 		]
 	},
 	{
@@ -189,14 +216,12 @@ export const achievementGroups: AchievementGroup[] = [
 				issuer: 'Cebu Roosevelt Memorial Colleges',
 				date: 'Apr 2025',
 				image: dl3,
-				featured: true
 			},
 			{
 				title: 'Deans Lister 1st Year (2nd Semester)',
 				issuer: 'Cebu Roosevelt Memorial Colleges',
 				date: 'Apr 2025',
 				image: dl2,
-				featured: true
 			},
 			{
 				title: 'Deans Lister 1st Year (1st Semester)',
