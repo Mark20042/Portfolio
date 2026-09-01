@@ -53,10 +53,10 @@ export const achievementGroups: AchievementGroup[] = [
 		category: 'Software Development',
 		items: [
 			{
-				title: 'Frontend Developer (React)',
+				title: 'Rest API Developer (Intermediate)',
 				issuer: 'HackerRank',
 				date: 'Oct 2025',
-				image: frontend,
+				image: rest_api,
 				featured: true
 			},
 			{
@@ -67,18 +67,19 @@ export const achievementGroups: AchievementGroup[] = [
 				featured: true
 			},
 			{
+				title: 'Frontend Developer (React)',
+				issuer: 'HackerRank',
+				date: 'Oct 2025',
+				image: frontend,
+				featured: true
+			},
+			{
 				title: 'Software Engineer Internship',
 				issuer: 'HackerRank',
 				date: 'Oct 2025',
 				image: swe_intern,
-				featured: true
 			},
-			{
-				title: 'Rest API Developer (Intermediate)',
-				issuer: 'HackerRank',
-				date: 'Oct 2025',
-				image: rest_api
-			},
+			
 			{
 				title: 'SQL (Advanced)',
 				issuer: 'HackerRank',
