@@ -27,7 +27,7 @@ import ethicalhacking from '$lib/images/certificates/networking/ethicalhacker.we
 import juniorcybersec from '$lib/images/certificates/networking/juniorcybersec.webp';
 import linuxessen from '$lib/images/certificates/networking/linuxessen.webp';
 import cybersecintro from '$lib/images/certificates/networking/cybersectintro.webp';
-import coap from '$lib/images/certificates/cybersec/apipentestercert.png';
+import coap from '$lib/images/certificates/cybersec/apipentester.png';
 import webpt from '$lib/images/certificates/cybersec/webpenetrationtester.png';
 import netops from '$lib/images/certificates/cybersec/netops.png';
 
