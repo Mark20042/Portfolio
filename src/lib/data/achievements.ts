@@ -16,7 +16,12 @@ import jsessen from '$lib/images/certificates/development/jseessen.webp';
 import htmlessen from '$lib/images/certificates/development/htmlessen.webp';
 import softwareengineer from '$lib/images/certificates/development/softwareengineer.png';
 import solutionandarchitecture from '$lib/images/certificates/development/solutionandarchitecture.png';
+import embeddedsystem from '$lib/images/certificates/development/embeddedsystem.png';
+import laravel from '$lib/images/certificates/development/laravel.png';
+import expressjs from '$lib/images/certificates/development/expressjs.png';
+import reactnative from '$lib/images/certificates/development/reactnative.png';
 import restapis from '$lib/images/certificates/development/restapis.png';
+import oop from '$lib/images/certificates/development/oop.png';
 
 //schools certificate
 import robotics from '$lib/images/certificates/schools/cert.webp';
@@ -29,11 +34,15 @@ import dl3 from '$lib/images/certificates/schools/dl3.webp';
 import aiengineer from '$lib/images/certificates/datascience/aiengineer.png';
 import llmengineer from '$lib/images/certificates/datascience/llmengineer.png';
 import promptengineer from '$lib/images/certificates/datascience/promptengineer.png';
-
 import datascience from '$lib/images/certificates/datascience/datascience.png';
 import deeplearning from '$lib/images/certificates/datascience/deeplearning.png';
 import machinelearning from '$lib/images/certificates/datascience/machinelearning.png';
 import aiagent from '$lib/images/certificates/datascience/aiagent.png';
+
+// cloud and devops
+import aws from '$lib/images/certificates/clouddevops/aws.png';
+import azure from '$lib/images/certificates/clouddevops/azure.png';
+import git from '$lib/images/certificates/clouddevops/git.png';
 
 //networking and cybersecurity
 import networkingbasics from '$lib/images/certificates/networking/networkingbasics.webp';
@@ -79,6 +88,60 @@ export const achievementGroups: AchievementGroup[] = [
 				date: 'Oct 2025',
 				image: swe,
 				featured: true
+			},
+			{
+				title: 'Software Engineer',
+				issuer: 'Tesdome',
+				date: 'Sept 2026',
+				image: softwareengineer,
+				featured: true
+			},
+			{
+				title: "Solution and Architecture",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: solutionandarchitecture,
+				featured: true
+			},
+			{
+				title: "Embedded System",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: embeddedsystem,
+				featured: true
+			},
+			{
+				title: "Laravel",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: laravel,
+				featured: true
+			},
+			{
+				title: "Express.JS",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: expressjs,
+				featured: true
+			},
+			{
+				title: "React Native",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: reactnative,
+				featured: true
+			},
+			{
+				title: "OOP",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: oop,
+			},
+			{
+				title: "Rest API",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: restapis,
 			},
 			{
 				title: 'Frontend Developer (React)',
@@ -162,27 +225,8 @@ export const achievementGroups: AchievementGroup[] = [
 				date: 'Oct 2025',
 				image: rba
 			},
-			{
-				title: 'Software Engineer',
-				issuer: 'Tesdome',
-				date: 'Sept 2026',
-				image: softwareengineer,
-				featured: true
-			},
-			{
-				title: "Solution and Architecture",
-				issuer: "Tesdome",
-				date: "Sept 2026",
-				image: solutionandarchitecture,
-				featured: true
-			},
-			{
-				title: "Rest API",
-				issuer: "Tesdome",
-				date: "Sept 2026",
-				image: restapis,
-				featured: true
-			}
+			
+			
 		]
 	},
 	{
@@ -296,6 +340,32 @@ export const achievementGroups: AchievementGroup[] = [
 				image: cybersecintro
 			},
 
+		]
+	},
+	{
+		category: 'Cloud & DevOps',
+		items: [
+			{
+				title: " Amazon Web Services",
+				issuer: 'Tesdome',
+				date: 'Sept 2026',
+				image: aws,
+				featured: true
+			},
+			{
+				title: " Microsoft Azure",
+				issuer: 'Tesdome',
+				date: 'Sept 2026',
+				image: azure,
+				featured: true
+			},
+			{
+				title: " Git",
+				issuer: 'Tesdome',
+				date: 'Sept 2026',
+				image: git,
+				featured: true
+			},
 		]
 	},
 	
