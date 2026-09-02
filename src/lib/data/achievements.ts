@@ -122,14 +122,14 @@ export const achievementGroups: AchievementGroup[] = [
 				issuer: "Tesdome",
 				date: "Sept 2026",
 				image: expressjs,
-				featured: true
+				
 			},
 			{
 				title: "React Native",
 				issuer: "Tesdome",
 				date: "Sept 2026",
 				image: reactnative,
-				featured: true
+				
 			},
 			{
 				title: "OOP",
@@ -148,7 +148,7 @@ export const achievementGroups: AchievementGroup[] = [
 				issuer: 'HackerRank',
 				date: 'Oct 2025',
 				image: frontend,
-				featured: true
+				
 			},
 			{
 				title: 'Software Engineer Internship',
@@ -258,21 +258,21 @@ export const achievementGroups: AchievementGroup[] = [
 				issuer: "Tesdome",
 				date: "Oct 2026",
 				image: datascience,
-				featured: true
+				
 			},
 			{
 				title: "Deep Learning",
 				issuer: "Tesdome",
 				date: "Oct 2026",
 				image: deeplearning,
-				featured: true
+			
 			},
 			{
 				title: "Machine Learning",
 				issuer: "Tesdome",
 				date: "Oct 2026",
 				image: machinelearning,
-				featured: true
+			
 			},
 			{
 				title: "AI Agent",
