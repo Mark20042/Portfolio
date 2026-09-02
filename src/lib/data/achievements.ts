@@ -14,12 +14,26 @@ import rba from '$lib/images/certificates/development/rba.webp';
 import sql from '$lib/images/certificates/development/sql.webp';
 import jsessen from '$lib/images/certificates/development/jseessen.webp';
 import htmlessen from '$lib/images/certificates/development/htmlessen.webp';
+import softwareengineer from '$lib/images/certificates/development/softwareengineer.png';
+import solutionandarchitecture from '$lib/images/certificates/development/solutionandarchitecture.png';
+import restapis from '$lib/images/certificates/development/restapis.png';
 
 //schools certificate
 import robotics from '$lib/images/certificates/schools/cert.webp';
 import dl1 from '$lib/images/certificates/schools/dl1.webp';
 import dl2 from '$lib/images/certificates/schools/dl2.webp';
 import dl3 from '$lib/images/certificates/schools/dl3.webp';
+
+
+// data science 
+import aiengineer from '$lib/images/certificates/datascience/aiengineer.png';
+import llmengineer from '$lib/images/certificates/datascience/llmengineer.png';
+import promptengineer from '$lib/images/certificates/datascience/promptengineer.png';
+
+import datascience from '$lib/images/certificates/datascience/datascience.png';
+import deeplearning from '$lib/images/certificates/datascience/deeplearning.png';
+import machinelearning from '$lib/images/certificates/datascience/machinelearning.png';
+import aiagent from '$lib/images/certificates/datascience/aiagent.png';
 
 //networking and cybersecurity
 import networkingbasics from '$lib/images/certificates/networking/networkingbasics.webp';
@@ -147,8 +161,83 @@ export const achievementGroups: AchievementGroup[] = [
 				issuer: 'HackerRank',
 				date: 'Oct 2025',
 				image: rba
+			},
+			{
+				title: 'Software Engineer',
+				issuer: 'Tesdome',
+				date: 'Sept 2026',
+				image: softwareengineer,
+				featured: true
+			},
+			{
+				title: "Solution and Architecture",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: solutionandarchitecture,
+				featured: true
+			},
+			{
+				title: "Rest API",
+				issuer: "Tesdome",
+				date: "Sept 2026",
+				image: restapis,
+				featured: true
 			}
 		]
+	},
+	{
+		category: "AI & Data Science",
+		items: [
+			{
+				title: "AI Engineer",
+				issuer: "Tesdome",
+				date: "Oct 2026",
+				image: aiengineer,
+				featured: true
+			},
+			{
+				title: "LLM Engineer",
+				issuer: "Tesdome",
+				date: "Oct 2026",
+				image: llmengineer,
+				featured: true
+			},
+			{
+				title: "Prompt Engineer",
+				issuer: "Tesdome",
+				date: "Oct 2026",
+				image: promptengineer,
+				featured: true
+			},
+			{
+				title: "Data Science",
+				issuer: "Tesdome",
+				date: "Oct 2026",
+				image: datascience,
+				featured: true
+			},
+			{
+				title: "Deep Learning",
+				issuer: "Tesdome",
+				date: "Oct 2026",
+				image: deeplearning,
+				featured: true
+			},
+			{
+				title: "Machine Learning",
+				issuer: "Tesdome",
+				date: "Oct 2026",
+				image: machinelearning,
+				featured: true
+			},
+			{
+				title: "AI Agent",
+				issuer: "Tesdome",
+				date: "Oct 2026",
+				image: aiagent,
+			}
+		]
+
 	},
 	{
 		category: 'Networking & Cybersecurity',
@@ -209,6 +298,7 @@ export const achievementGroups: AchievementGroup[] = [
 
 		]
 	},
+	
 	{
 		category: 'Scholastic & Extracurricular',
 		items: [
@@ -238,4 +328,5 @@ export const achievementGroups: AchievementGroup[] = [
 			}
 		]
 	}
+
 ];
