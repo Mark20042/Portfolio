@@ -209,7 +209,7 @@
 					/>
 					83 Google Cloud Badges
 				</a>
-				<div class="flex shrink-0 items-center gap-3 sm:gap-6">
+				<div class="flex shrink-0 flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
 				<a
 					href="https://certificates.dev/c/a182214f-2817-44f1-aca5-116ab2b162c1"
 					target="_blank"
