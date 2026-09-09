@@ -38,6 +38,7 @@ import datascience from '$lib/images/certificates/datascience/datascience.png';
 import deeplearning from '$lib/images/certificates/datascience/deeplearning.png';
 import machinelearning from '$lib/images/certificates/datascience/machinelearning.png';
 import aiagent from '$lib/images/certificates/datascience/aiagent.png';
+import rag from '$lib/images/certificates/datascience/rag.png';
 
 // cloud and devops
 import aws from '$lib/images/certificates/clouddevops/aws.png';
@@ -247,11 +248,18 @@ export const achievementGroups: AchievementGroup[] = [
 				featured: true
 			},
 			{
+				title: "Retrieval Augmented Generation (RAG)",
+				issuer: "MongoDB",
+				date: "Sept 2026",
+				image: rag,
+				featured: true
+			},
+			{
 				title: "Prompt Engineer",
 				issuer: "Tesdome",
 				date: "Oct 2026",
 				image: promptengineer,
-				featured: true
+				featured: false
 			},
 			{
 				title: "Data Science",

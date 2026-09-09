@@ -4,6 +4,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import dataCampLogo from '$lib/images/datacamplogo.svg';
 	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
 
 	import { Eye, Star, Heart, MapPin, Github, Gamepad2, Play } from 'lucide-svelte';
@@ -208,6 +209,7 @@
 					/>
 					83 Google Cloud Badges
 				</a>
+				<div class="flex shrink-0 items-center gap-3 sm:gap-6">
 				<a
 					href="https://certificates.dev/c/a182214f-2817-44f1-aca5-116ab2b162c1"
 					target="_blank"
@@ -224,6 +226,20 @@
 					</svg>
 					Certified Junior React Developer
 				</a>
+				<a
+					href="https://www.datacamp.com/certificate/AIEDA0016778679335"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-blue-600 sm:text-sm dark:text-slate-300 dark:hover:text-blue-400"
+				>
+					<img
+						src={dataCampLogo}
+						alt="DataCamp"
+						class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+					
+					AI Engineer for Developers Associate
+				</a>
+				</div>
 			</StaggerReveal>
 
 			<StaggerReveal delay={290} stagger={100} duration={650} className="mt-4 flex flex-wrap items-center gap-3 sm:mt-5">
