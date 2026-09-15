@@ -1,15 +1,20 @@
 <script lang="ts">
 	import myImage from '$lib/images/me.webp';
-	import { fly } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
+	import { fly, scale, fade } from 'svelte/transition';
+	import { cubicOut, backOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import dataCampLogo from '$lib/images/datacamplogo.svg';
 	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
+	import dictBadge from '$lib/images/dict-cyberpro-badge.png';
+	import dictQrCode from '$lib/images/dict-cyberpro-qr.png';
+	import dictLogo from '$lib/images/dict-logo.png';
+	import { portal } from '$lib/actions/portal';
 
-	import { Eye, Star, Heart, MapPin, Github, Gamepad2, Play } from 'lucide-svelte';
+	import { Eye, Star, Heart, MapPin, Github, Gamepad2, Play, ShieldCheck, X, Download, ExternalLink, ChevronRight } from 'lucide-svelte';
 
 	let mounted = $state(false);
+	let showDictModal = $state(false);
 
 	let viewsCount = $state(0);
 	let likesCount = $state(0);
@@ -141,15 +146,15 @@
 					class="mb-3 flex items-center gap-1.5 text-sm font-medium text-slate-700 sm:text-base dark:text-slate-300"
 				>
 					<MapPin class="h-4 w-4 text-slate-600 dark:text-slate-400" />
-					Banban Bogo City, Cebu, Philippines
+					Cayang Bogo City, Cebu, Philippines
 				</div>
 
 				<div
 					class="mb-6 flex items-center gap-1.5 text-xs font-medium whitespace-nowrap text-slate-900 sm:gap-2 sm:text-sm md:text-base dark:text-white"
 				>
-					Full-Stack Developer <span class="font-light text-slate-300 dark:text-slate-600">\</span>
-					Generative AI
-					<span class="font-light text-slate-300 dark:text-slate-600">\</span> Data Science
+					Software Engineer <span class="font-light text-slate-300 dark:text-slate-600">\</span>
+					AI Developer
+					<span class="font-light text-slate-300 dark:text-slate-600">\</span> Cybersecurity
 				</div>
 			</StaggerReveal>
 
@@ -189,7 +194,7 @@
 					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-slate-900 sm:text-sm dark:text-slate-300 dark:hover:text-white"
 				>
 					<Github class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-					Rank 190 GitHub in
+					Top 190 Most Followed GitHub in
 					<img
 						src="https://camo.githubusercontent.com/63a8c7227a0afb177ce4c90991f3314944d611f06d78fd4099d4c95e1e0d9b41/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f392f39392f466c61675f6f665f7468655f5068696c697070696e65732e737667"
 						alt="Philippines Flag"
@@ -230,7 +235,7 @@
 					href="https://www.datacamp.com/certificate/AIEDA0016778679335"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-blue-600 sm:text-sm dark:text-slate-300 dark:hover:text-blue-400"
+					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-green-600 sm:text-sm dark:text-slate-300 dark:hover:text-green-400"
 				>
 					<img
 						src={dataCampLogo}
@@ -239,6 +244,20 @@
 					
 					AI Engineer for Developers Associate
 				</a>
+				</div>
+				
+				<div class="flex w-full sm:mt-1">
+					<button
+						onclick={(e) => { e.preventDefault(); showDictModal = true; }}
+						class="flex cursor-pointer shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-indigo-600 sm:text-sm dark:text-slate-300 dark:hover:text-indigo-400"
+					>
+						<img 
+							src={dictLogo} 
+							alt="DICT Logo" 
+							class="h-3.5 w-auto shrink-0 sm:h-4" 
+						/>
+						DICT Cybersecurity Level 2
+					</button>
 				</div>
 			</StaggerReveal>
 
@@ -328,6 +347,77 @@
 					decoding="sync"
 					class="h-full w-full object-cover brightness-100 contrast-100 drop-shadow-[0_20px_25px_rgba(236,72,153,0.4)] grayscale-0 transition-all duration-400 ease-out group-hover:scale-110"
 				/>
+			</div>
+		</div>
+	</div>
+{/if}
+
+{#if showDictModal}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+	<div
+		use:portal
+		class="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-8"
+		style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100dvh;"
+		onclick={() => (showDictModal = false)}
+		onkeydown={(e) => e.key === 'Escape' && (showDictModal = false)}
+		tabindex="-1"
+		role="dialog"
+		aria-modal="true"
+	>
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div
+			class="animate-in fade-in zoom-in-95 relative flex w-full max-w-2xl flex-col items-center duration-300"
+			onclick={(e) => e.stopPropagation()}
+		>
+			<!-- Close button -->
+			<button
+				onclick={() => (showDictModal = false)}
+				class="absolute -top-12 right-0 rounded-full bg-white/10 p-2 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-white/20"
+				aria-label="Close modal"
+			>
+				<X class="h-6 w-6" />
+			</button>
+
+			<img
+				src={dictBadge}
+				alt="DICT Cybersecurity Badge"
+				loading="lazy"
+				decoding="async"
+				class="h-auto max-h-[75vh] w-full rounded-lg object-contain shadow-2xl"
+			/>
+
+			<div class="mt-6 w-full text-center">
+				<h3 class="mb-2 text-2xl font-bold text-white">DICT Cybersecurity Recognition</h3>
+				<p class="font-medium text-white/70">How to Verify</p>
+				
+				<div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs font-medium text-white/60 sm:text-sm">
+					<span>Download QR</span>
+					<ChevronRight class="h-3.5 w-3.5 opacity-50" />
+					<span>Go to Portal</span>
+					<ChevronRight class="h-3.5 w-3.5 opacity-50" />
+					<span>Upload QR</span>
+				</div>
+				
+				<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+					<a 
+						href={dictQrCode} 
+						download="dict-cyberpro-qr.png"
+						class="flex items-center justify-center gap-2 rounded-xl bg-indigo-500/90 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+					>
+						<Download class="h-4 w-4" />
+						Download QR
+					</a>
+					<a 
+						href="https://cyberpro.dict.gov.ph/verify"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white shadow-sm backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/20"
+					>
+						Verify on Portal
+						<ExternalLink class="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

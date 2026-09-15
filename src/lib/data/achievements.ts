@@ -55,6 +55,7 @@ import coap from '$lib/images/certificates/cybersec/apipentester.png';
 import webpt from '$lib/images/certificates/cybersec/webpenetrationtester.png';
 import netops from '$lib/images/certificates/cybersec/netops.png';
 
+
 /** Defines the structure for a single achievement item */
 export interface AchievementItem {
 	title: string;
