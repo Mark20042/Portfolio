@@ -9,6 +9,7 @@
 	import dictBadge from '$lib/images/dict-cyberpro-badge.png';
 	import dictQrCode from '$lib/images/dict-cyberpro-qr.png';
 	import dictLogo from '$lib/images/dict-logo.png';
+	import oracleLogo from '$lib/images/oracle-logo.png';
 	import { portal } from '$lib/actions/portal';
 
 	import { Eye, Star, Heart, MapPin, Github, Gamepad2, Play, ShieldCheck, X, Download, ExternalLink, ChevronRight } from 'lucide-svelte';
@@ -231,33 +232,62 @@
 					</svg>
 					Certified Junior React Developer
 				</a>
-				<a
-					href="https://www.datacamp.com/certificate/AIEDA0016778679335"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-green-600 sm:text-sm dark:text-slate-300 dark:hover:text-green-400"
+				<button
+					onclick={(e) => { e.preventDefault(); showDictModal = true; }}
+					class="flex cursor-pointer shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-indigo-600 sm:text-sm dark:text-slate-300 dark:hover:text-indigo-400"
 				>
-					<img
-						src={dataCampLogo}
-						alt="DataCamp"
-						class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
-					
-					AI Engineer for Developers Associate
-				</a>
+					<img 
+						src={dictLogo} 
+						alt="DICT Logo" 
+						class="h-3.5 w-auto shrink-0 sm:h-4" 
+					/>
+					DICT Cybersecurity Level 2
+				</button>
 				</div>
 				
-				<div class="flex w-full sm:mt-1">
-					<button
-						onclick={(e) => { e.preventDefault(); showDictModal = true; }}
-						class="flex cursor-pointer shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-indigo-600 sm:text-sm dark:text-slate-300 dark:hover:text-indigo-400"
+				<div class="flex w-full flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 sm:mt-1">
+					<a
+						href="https://www.datacamp.com/certificate/AIEDA0016778679335"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-green-600 sm:text-sm dark:text-slate-300 dark:hover:text-green-400"
 					>
-						<img 
-							src={dictLogo} 
-							alt="DICT Logo" 
-							class="h-3.5 w-auto shrink-0 sm:h-4" 
-						/>
-						DICT Cybersecurity Level 2
-					</button>
+						<img
+							src={dataCampLogo}
+							alt="DataCamp"
+							class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+						
+						AI Engineer for Developers Associate
+					</a>
+					<a
+						href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=4C1B1866C6AAD8300EAA6949385ECEB2B19B0821AF31C7E356EA9D3113678ABB"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-red-600 sm:text-sm dark:text-slate-300 dark:hover:text-red-400"
+					>
+						<img
+							src={oracleLogo}
+							alt="Oracle"
+							class="h-3.5 w-auto shrink-0 sm:h-4" />
+						
+						Agentic AI Certified Associate
+					</a>
+				</div>
+				
+				<div class="flex w-full sm:mt-2">
+					<a
+						href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=131EC2275FD9FCDCFEDF96C462CB51E8141FB7D57FA14DCBD51DBB380C8E63DC"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-red-600 sm:text-sm dark:text-slate-300 dark:hover:text-red-400"
+					>
+						<img
+							src={oracleLogo}
+							alt="Oracle"
+							class="h-3.5 w-auto shrink-0 sm:h-4" />
+						
+						Oracle Cloud Infrastructure Certified Architect Associate
+					</a>
 				</div>
 			</StaggerReveal>
 
