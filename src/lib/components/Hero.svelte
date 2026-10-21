@@ -153,7 +153,7 @@
 				<div
 					class="mb-6 flex items-center gap-1.5 text-xs font-medium whitespace-nowrap text-slate-900 sm:gap-2 sm:text-sm md:text-base dark:text-white"
 				>
-					Software Engineer <span class="font-light text-slate-300 dark:text-slate-600">\</span>
+					Software Developer <span class="font-light text-slate-300 dark:text-slate-600">\</span>
 					AI Developer
 					<span class="font-light text-slate-300 dark:text-slate-600">\</span> Cybersecurity
 				</div>
@@ -209,7 +209,7 @@
 					class="flex shrink-0 items-center gap-1.5 text-[11px] font-bold whitespace-nowrap text-slate-700 hover:text-yellow-600 sm:text-sm dark:text-slate-300 dark:hover:text-yellow-400"
 				>
 					<img
-						src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+						src="https://i.pinimg.com/originals/2a/0d/85/2a0d85176c2920afc72f2a3c439eb270.png"
 						alt="Google"
 						class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4"
 					/>
