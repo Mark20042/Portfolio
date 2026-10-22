@@ -198,7 +198,7 @@ export const projectsData: ProjectItem[] = [
 		title: 'Sumobot (Creative Visionary Award)',
 		category: 'Robotics',
 		description:
-			"An autonomous, sensor-driven Sumobot built for the 'InnovaTech Nexus' robotics exhibition. Designed to detect and push opponents out of a ring, this robot won the 'Creative Visionary Award' for its exceptional innovation and practical application of robotics principles.",
+			"An autonomous, sensor-driven Sumobot built for the 'InnovaTech Nexus' robotics exhibition on January 25, 2024. Designed to detect and push opponents out of a ring, this robot received the 'Creative Visionary Award' in recognition of its standout robot design.",
 		image: sumobot,
 		images: [sumobot],
 		techStack: ['Arduino', 'C++', 'Ultrasonic Sensors', 'Motor Driver', 'Robotics'],

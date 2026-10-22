@@ -2,10 +2,12 @@
 	import { projectsData, type ProjectItem } from '$lib/data/projects';
 	import { onMount } from 'svelte';
 	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
+	import AwardWinningWork from '$lib/components/AwardWinningWork.svelte';
+	import { awardsData } from '$lib/data/awards';
 	import { portal } from '$lib/actions/portal';
 
-	// Show only Linog Tracker (id:1) and SipaCareer (id:3)
-	const featuredProjects = projectsData.filter((p) => p.featured === true);
+	const awardProjectIds = new Set(awardsData.map((award) => award.projectId));
+	const featuredProjects = projectsData.filter((p) => p.featured && !awardProjectIds.has(p.id));
 
 	let selectedProject = $state<ProjectItem | null>(null);
 
@@ -26,45 +28,60 @@
 	});
 </script>
 
-<div class="mb-24 pt-12 sm:pt-16" id="projects">
-	<div class="mb-12 flex flex-col justify-between gap-4 sm:mb-16 sm:flex-row sm:items-end">
-		<div class="max-w-2xl text-left">
-			<h2
-				class="mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:mb-6 sm:text-5xl dark:text-white"
-			>
-				Check out my featured work
-			</h2>
-			<p class="text-base leading-relaxed text-slate-600 sm:text-xl dark:text-slate-400">
-				Here are some of the projects I'm most proud of each one built with passion and attention to
-				detail.
-			</p>
-		</div>
-		<a
-			href="/projects"
-			class="group inline-flex items-center gap-2 pb-1 font-semibold whitespace-nowrap text-sky-500 transition-colors hover:text-sky-600 sm:pb-2 dark:hover:text-sky-400"
+<div class="scroll-mt-10" id="projects">
+	<StaggerReveal delay={40} stagger={90} duration={650}>
+		<p
+			class="font-mono text-[10px] font-medium tracking-[0.14em] text-slate-500 uppercase dark:text-slate-400"
 		>
-			View All Projects
-			<svg
-				class="h-4 w-4 transition-transform group-hover:translate-x-1"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"
-				></polyline></svg
+			03 — Work
+		</p>
+	</StaggerReveal>
+	<div class="mt-7 mb-12 grid gap-7 sm:mb-16 md:grid-cols-2 md:gap-12">
+		<StaggerReveal delay={90} stagger={90} duration={700}>
+			<h2
+				class="font-mono text-4xl leading-[1.05] font-bold tracking-[-0.06em] text-slate-950 sm:text-5xl dark:text-white"
 			>
-		</a>
+				Selected<br />work.
+			</h2>
+		</StaggerReveal>
+		<StaggerReveal
+			delay={150}
+			stagger={90}
+			duration={700}
+			className="flex flex-col items-start gap-4"
+		>
+			<p class="max-w-md text-base leading-7 text-slate-600 dark:text-slate-400">
+				Award-winning and featured projects I’ve built with care, from useful ideas to working
+				products.
+			</p>
+			<a
+				href="/projects"
+				class="font-semibold text-sky-600 underline-offset-4 hover:underline focus-visible:underline dark:text-sky-400"
+			>
+				View all projects
+			</a>
+		</StaggerReveal>
 	</div>
 
+	<AwardWinningWork />
+
 	<!-- Featured Projects -->
-	<div class="flex flex-col gap-24 sm:gap-36">
+	<p
+		class="mb-8 font-mono text-[10px] tracking-[0.14em] text-slate-500 uppercase dark:text-slate-400"
+	>
+		Featured work
+	</p>
+	<div class="featured-work grid items-start gap-x-10 gap-y-16 xl:grid-cols-2">
 		{#each featuredProjects as project, idx}
 			<StaggerReveal delay={idx * 110} stagger={70} duration={700} className="flex flex-col">
+				<p
+					class="mb-4 flex items-center justify-between font-mono text-[10px] tracking-widest text-slate-500 uppercase dark:text-slate-400"
+				>
+					<span>Featured / {project.category}</span><span>{String(idx + 1).padStart(2, '0')}</span>
+				</p>
 				<button type="button" onclick={() => (selectedProject = project)} class="text-left">
 					<h3
-						class="mb-3 text-2xl leading-tight font-bold text-slate-900 transition-colors hover:text-sky-500 sm:text-3xl dark:text-white"
+						class="mb-3 text-xl leading-tight font-bold tracking-tight text-slate-900 transition-colors hover:text-sky-500 sm:text-2xl dark:text-white"
 					>
 						{project.title}
 					</h3>
@@ -114,7 +131,7 @@
 				</button>
 
 				<div class="mt-5 px-1">
-					<p class="mb-5 text-sm leading-relaxed text-slate-500 sm:text-base dark:text-slate-400">
+					<p class="mb-5 line-clamp-3 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
 						{project.description}
 					</p>
 					<div class="flex flex-wrap gap-2">
@@ -128,6 +145,12 @@
 					</div>
 				</div>
 
+				<button
+					type="button"
+					onclick={() => (selectedProject = project)}
+					class="mt-5 self-start text-sm font-semibold text-slate-900 underline-offset-4 hover:underline focus-visible:underline dark:text-white"
+					>Explore project</button
+				>
 				{#if project.githubLink || project.liveDemoLink}
 					<div class="mt-4 flex flex-wrap gap-3">
 						{#if project.githubLink}
@@ -247,9 +270,7 @@
 					</div>
 
 					<!-- Modal Body -->
-					<div
-						class="relative z-10 px-5 pt-5 pb-6 sm:-mt-8 sm:px-10 sm:pt-8 sm:pb-10"
-					>
+					<div class="relative z-10 px-5 pt-5 pb-6 sm:-mt-8 sm:px-10 sm:pt-8 sm:pb-10">
 						<div class="mb-8 flex flex-col items-start justify-between gap-6 md:flex-row">
 							<div>
 								<p class="mb-2 text-sm font-bold tracking-widest text-sky-500 uppercase">
@@ -338,3 +359,10 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.featured-work :global(.stagger-wrap) {
+		height: 100%;
+		background: transparent;
+	}
+</style>

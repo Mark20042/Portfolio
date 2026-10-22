@@ -4,30 +4,58 @@
 @variant dark (&:where(.dark, .dark *));
 
 @layer utilities {
-  .bg-github-grid {
-    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpattern id='empty' width='5' height='5' patternUnits='userSpaceOnUse'%3E%3Crect width='3' height='3' rx='0.5' fill='%23ebedf0' /%3E%3C/pattern%3E%3Crect width='25' height='25' fill='url(%23empty)' /%3E%3Crect x='5' y='5' width='3' height='3' rx='0.5' fill='%239be9a8'/%3E%3Crect x='15' y='0' width='3' height='3' rx='0.5' fill='%2340c463'/%3E%3Crect x='0' y='20' width='3' height='3' rx='0.5' fill='%2330a14e'/%3E%3Crect x='20' y='10' width='3' height='3' rx='0.5' fill='%23216e39'/%3E%3Crect x='10' y='15' width='3' height='3' rx='0.5' fill='%2340c463'/%3E%3C/svg%3E");
-  }
-  .dark .bg-github-grid {
-    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpattern id='empty' width='5' height='5' patternUnits='userSpaceOnUse'%3E%3Crect width='3' height='3' rx='0.5' fill='%231f1f1f' /%3E%3C/pattern%3E%3Crect width='25' height='25' fill='url(%23empty)' /%3E%3Crect x='5' y='5' width='3' height='3' rx='0.5' fill='%230e4429'/%3E%3Crect x='15' y='0' width='3' height='3' rx='0.5' fill='%23006d32'/%3E%3Crect x='0' y='20' width='3' height='3' rx='0.5' fill='%2326a641'/%3E%3Crect x='20' y='10' width='3' height='3' rx='0.5' fill='%2339d353'/%3E%3Crect x='10' y='15' width='3' height='3' rx='0.5' fill='%23006d32'/%3E%3C/svg%3E");
-  }
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-::view-transition-old(root) {
-  z-index: 1;
-}
-::view-transition-new(root) {
-  z-index: 2147483646;
+	.bg-github-grid {
+		background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpattern id='empty' width='5' height='5' patternUnits='userSpaceOnUse'%3E%3Crect width='3' height='3' rx='0.5' fill='%23ebedf0' /%3E%3C/pattern%3E%3Crect width='25' height='25' fill='url(%23empty)' /%3E%3Crect x='5' y='5' width='3' height='3' rx='0.5' fill='%239be9a8'/%3E%3Crect x='15' y='0' width='3' height='3' rx='0.5' fill='%2340c463'/%3E%3Crect x='0' y='20' width='3' height='3' rx='0.5' fill='%2330a14e'/%3E%3Crect x='20' y='10' width='3' height='3' rx='0.5' fill='%23216e39'/%3E%3Crect x='10' y='15' width='3' height='3' rx='0.5' fill='%2340c463'/%3E%3C/svg%3E");
+	}
+	.dark .bg-github-grid {
+		background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpattern id='empty' width='5' height='5' patternUnits='userSpaceOnUse'%3E%3Crect width='3' height='3' rx='0.5' fill='%231f1f1f' /%3E%3C/pattern%3E%3Crect width='25' height='25' fill='url(%23empty)' /%3E%3Crect x='5' y='5' width='3' height='3' rx='0.5' fill='%230e4429'/%3E%3Crect x='15' y='0' width='3' height='3' rx='0.5' fill='%23006d32'/%3E%3Crect x='0' y='20' width='3' height='3' rx='0.5' fill='%2326a641'/%3E%3Crect x='20' y='10' width='3' height='3' rx='0.5' fill='%2339d353'/%3E%3Crect x='10' y='15' width='3' height='3' rx='0.5' fill='%23006d32'/%3E%3C/svg%3E");
+	}
 }
 
 html {
-  background-color: #ffffff;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	background-color: #ffffff;
+	font-family:
+		'Inter',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif;
 }
 html.dark {
-  background-color: #111111;
+	background-color: #111111;
+}
+
+/* Allow content to shrink inside shared grid and flex layouts. */
+main,
+main :where(.grid, .flex) > * {
+	min-width: 0;
+}
+
+main :where(h1, h2, h3, p, li, a) {
+	overflow-wrap: anywhere;
+}
+
+main :where(img, video) {
+	max-width: 100%;
+}
+
+@media (max-width: 639px) {
+	#intro > div {
+		max-width: 100%;
+	}
+
+	#intro :where(a, button) {
+		max-width: 100%;
+		white-space: normal;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto !important;
+	}
 }

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { achievementGroups, type AchievementItem } from '$lib/data/achievements';
 	import Reveal from '$lib/components/Reveal.svelte';
+	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
 	import { portal } from '$lib/actions/portal';
 
 	// Flatten all items and grab the ones explicitly marked as featured
@@ -28,35 +29,38 @@
 	});
 </script>
 
-<div class="mb-24 pt-12 sm:pt-16" id="achievements">
-	<div class="mb-12 flex flex-col justify-between gap-4 sm:mb-16 sm:flex-row sm:items-end">
-		<div class="max-w-2xl text-left">
-			<h2
-				class="mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:mb-6 sm:text-5xl dark:text-white"
-			>
-				Certifications & Achievements
-			</h2>
-			<p class="text-base leading-relaxed text-slate-600 sm:text-xl dark:text-slate-400">
-				A showcase of my continuous learning and professional development.
-			</p>
-		</div>
-		<a
-			href="/certificates"
-			class="group inline-flex items-center gap-2 pb-1 font-semibold whitespace-nowrap text-sky-500 transition-colors hover:text-sky-600 sm:pb-2 dark:hover:text-sky-400"
+<div class="scroll-mt-10" id="achievements">
+	<StaggerReveal delay={40} stagger={90} duration={650}>
+		<p
+			class="font-mono text-[10px] font-medium tracking-[0.14em] text-slate-500 uppercase dark:text-slate-400"
 		>
-			View All Certificates
-			<svg
-				class="h-4 w-4 transition-transform group-hover:translate-x-1"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"
-				></polyline></svg
+			05 — Achievements
+		</p>
+	</StaggerReveal>
+	<div class="mt-7 mb-12 grid gap-7 sm:mb-16 md:grid-cols-2 md:gap-12">
+		<StaggerReveal delay={90} stagger={90} duration={700}>
+			<h2
+				class="font-mono text-4xl leading-[1.05] font-bold tracking-[-0.06em] text-slate-950 sm:text-5xl dark:text-white"
 			>
-		</a>
+				Always<br />learning.
+			</h2>
+		</StaggerReveal>
+		<StaggerReveal
+			delay={150}
+			stagger={90}
+			duration={700}
+			className="flex flex-col items-start gap-4"
+		>
+			<p class="max-w-md text-base leading-7 text-slate-600 dark:text-slate-400">
+				Certifications and milestones that reflect the skills I keep building.
+			</p>
+			<a
+				href="/certificates"
+				class="font-semibold text-sky-600 underline-offset-4 hover:underline focus-visible:underline dark:text-sky-400"
+			>
+				View all certificates
+			</a>
+		</StaggerReveal>
 	</div>
 
 	<div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

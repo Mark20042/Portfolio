@@ -2,6 +2,7 @@
 	import azoreworldImg from '$lib/images/games/azoreworld.png';
 	import luminarylogicImg from '$lib/images/games/luminarylogic.png';
 	import cosmicmatchImg from '$lib/images/games/cosmicmatch.png';
+	import StaggerReveal from '$lib/components/StaggerReveal.svelte';
 
 	let games = $state([
 		{
@@ -34,26 +35,26 @@
 	]);
 
 	let innerWidth = $state(1024);
-	let isMobile = $derived(innerWidth < 640);
+	let isMobile = $derived(innerWidth < 1024);
 
 	let swipingFrontId = $state<number | null>(null);
 	let swipingBackId = $state<number | null>(null);
 	let swipingDir = $state<number>(1);
 
 	const bringToFront = (index: number) => {
-		if (index === 0 || swipingFrontId !== null) return;
-		
+		if (isMobile || index === 0 || swipingFrontId !== null) return;
+
 		swipingFrontId = games[index].id;
 		swipingBackId = games[0].id;
 		swipingDir = index === 1 ? 1 : -1;
-		
+
 		setTimeout(() => {
 			const newGames = [...games];
 			const temp = newGames[0];
 			newGames[0] = newGames[index];
 			newGames[index] = temp;
 			games = newGames;
-			
+
 			swipingFrontId = null;
 			swipingBackId = null;
 		}, 300);
@@ -89,29 +90,46 @@
 
 <svelte:window bind:innerWidth />
 
-<div class="mb-24 pt-12 sm:pt-16" id="games">
-	<div class="mb-12 flex flex-col justify-between gap-4 sm:mb-16 sm:flex-row sm:items-end">
-		<div class="max-w-2xl text-left">
+<div class="scroll-mt-10" id="games">
+	<StaggerReveal delay={40} stagger={90} duration={650}>
+		<p
+			class="font-mono text-[10px] font-medium tracking-[0.14em] text-slate-500 uppercase dark:text-slate-400"
+		>
+			04 — Games
+		</p>
+	</StaggerReveal>
+	<div class="mt-7 mb-12 grid gap-7 sm:mb-16 md:grid-cols-2 md:gap-12">
+		<StaggerReveal delay={90} stagger={90} duration={700}>
 			<h2
-				class="mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:mb-6 sm:text-5xl dark:text-white"
+				class="font-mono text-4xl leading-[1.05] font-bold tracking-[-0.06em] text-slate-950 sm:text-5xl dark:text-white"
 			>
-				Play My Games
+				Play my<br />games.
 			</h2>
-			<p class="text-base leading-relaxed text-slate-600 sm:text-xl dark:text-slate-400">
-				Check out these web-based games I've developed. Click a card to bring it to the front!
+		</StaggerReveal>
+		<StaggerReveal delay={150} stagger={90} duration={700}>
+			<p class="max-w-md text-base leading-7 text-slate-600 dark:text-slate-400">
+				Explore the web games I’ve built. Pick a game below and jump in to play.
 			</p>
-		</div>
+		</StaggerReveal>
 	</div>
 
-	<div class="relative flex h-[240px] w-full items-center justify-center overflow-x-hidden py-4 sm:h-[300px] sm:overflow-visible">
+	<div
+		class="game-list relative grid w-full gap-6 sm:grid-cols-2 lg:flex lg:h-[360px] lg:items-center lg:justify-center lg:py-4"
+	>
 		{#each games as game, i (game.id)}
 			<div
-				class="absolute w-[300px] cursor-pointer rounded-[2rem] border border-slate-200 bg-white p-4 shadow-2xl transition-all duration-500 ease-in-out sm:w-[380px] sm:p-5 dark:border-[#222] dark:bg-[#111]"
+				class="game-card min-w-0 rounded-[2rem] border border-slate-200 bg-white p-5 lg:absolute lg:w-[340px] lg:cursor-pointer lg:shadow-2xl lg:transition-all lg:duration-500 lg:ease-in-out dark:border-[#222] dark:bg-[#111]"
 				style={getStyles(i, game.id)}
 				onclick={() => bringToFront(i)}
-				onkeydown={(e) => e.key === 'Enter' && bringToFront(i)}
+				onkeydown={(e) => {
+					if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) {
+						e.preventDefault();
+						bringToFront(i);
+					}
+				}}
 				role="button"
-				tabindex="0"
+				tabindex={isMobile ? -1 : 0}
+				aria-label={`Select ${game.title}`}
 			>
 				<!-- Tags -->
 				<div class="mb-4 flex flex-wrap gap-2">
@@ -150,7 +168,7 @@
 					>
 						<img src={game.image} alt={game.title} class="h-full w-full object-cover" />
 					</div>
-					<h3 class="text-xl font-bold leading-tight text-slate-900 dark:text-white">
+					<h3 class="text-xl leading-tight font-bold text-slate-900 dark:text-white">
 						{game.title}
 					</h3>
 				</div>
@@ -166,7 +184,7 @@
 						href={game.url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="group flex w-max items-center gap-3 rounded-full border border-slate-200 py-1.5 pl-5 pr-1.5 text-sm font-bold text-slate-700 transition-all hover:border-slate-300 hover:shadow-sm dark:border-[#333] dark:text-slate-300 dark:hover:border-[#444]"
+						class="group flex w-max items-center gap-3 rounded-full border border-slate-200 py-1.5 pr-1.5 pl-5 text-sm font-bold text-slate-700 transition-all hover:border-slate-300 hover:shadow-sm dark:border-[#333] dark:text-slate-300 dark:hover:border-[#444]"
 						onclick={(e) => {
 							if (!isMobile && i !== 0) {
 								e.preventDefault();
@@ -185,8 +203,8 @@
 								stroke="currentColor"
 								stroke-width="1"
 								stroke-linecap="round"
-								stroke-linejoin="round"
-							><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+								stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg
+							>
 						</span>
 					</a>
 				</div>
@@ -194,3 +212,19 @@
 		{/each}
 	</div>
 </div>
+
+<style>
+	@media (max-width: 1023px) {
+		.game-card {
+			transform: none !important;
+			opacity: 1 !important;
+			z-index: auto !important;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.game-card {
+			transition: none;
+		}
+	}
+</style>
