@@ -8,12 +8,16 @@
 	import Reveal from '$lib/components/Reveal.svelte';
 </script>
 
-<div class="mx-auto flex w-full max-w-[960px] min-w-0 flex-col gap-28 sm:gap-40 lg:gap-96">
+<div class="flex w-full min-w-0 flex-col">
 	<Hero />
 
-	<Reveal delay={80}><About /></Reveal>
-	<Reveal delay={120}><Education /></Reveal>
-	<Reveal delay={200}><Projects /></Reveal>
-	<Reveal delay={260}><Game /></Reveal>
-	<Reveal delay={320}><Achievements /></Reveal>
+	<div
+		class="mx-auto mt-24 flex w-full max-w-[960px] min-w-0 flex-col gap-28 px-4 sm:mt-36 sm:gap-40 sm:px-6 lg:gap-64"
+	>
+		<Reveal delay={80}><About /></Reveal>
+		<Reveal delay={120}><Education /></Reveal>
+		<Reveal delay={200}><Projects /></Reveal>
+		<Reveal delay={260}><Game /></Reveal>
+		<Reveal delay={320}><Achievements /></Reveal>
+	</div>
 </div>
